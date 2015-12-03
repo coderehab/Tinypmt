@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'todoist', 'uses' => 'TodoistController@authorized']);
+Route::get('todoist', ['as' => 'todoist', 'uses' => 'TodoistController@test']);
+Route::get('login/authorized', ['as' => 'todoist', 'uses' => 'TodoistController@authorized']);
+
