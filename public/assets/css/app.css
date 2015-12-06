@@ -1,0 +1,692 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+/* line 156, ../../../resources/assets/sass/app/_settings.scss */
+.color-1 {
+  color: #486589 !important; }
+
+/* line 157, ../../../resources/assets/sass/app/_settings.scss */
+.color-2 {
+  color: #444 !important; }
+
+/* line 158, ../../../resources/assets/sass/app/_settings.scss */
+.color-3 {
+  color: #444 !important; }
+
+/* line 159, ../../../resources/assets/sass/app/_settings.scss */
+.color-4 {
+  color: #444 !important; }
+
+/* line 161, ../../../resources/assets/sass/app/_settings.scss */
+.bg-color-1 {
+  background-color: #486589 !important; }
+
+/* line 162, ../../../resources/assets/sass/app/_settings.scss */
+.bg-color-2 {
+  background-color: #444 !important; }
+
+/* line 163, ../../../resources/assets/sass/app/_settings.scss */
+.bg-color-3 {
+  background-color: #444 !important; }
+
+/* line 164, ../../../resources/assets/sass/app/_settings.scss */
+.bg-color-4 {
+  background-color: #444 !important; }
+
+/* line 2, ../../../resources/assets/sass/core/_predefine.scss */
+html, body {
+  background-color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  color: #28292b;
+  line-height: 150%;
+  margin: 0;
+  padding: 0; }
+  /* line 11, ../../../resources/assets/sass/core/_predefine.scss */
+  html *, body * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+  /* line 16, ../../../resources/assets/sass/core/_predefine.scss */
+  html input[type="submit"], html button, body input[type="submit"], body button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
+
+/* line 23, ../../../resources/assets/sass/core/_predefine.scss */
+hr {
+  margin-top: 15px 0;
+  clear: both;
+  height: 1px;
+  border: 0;
+  background-color: #ccc; }
+
+/* line 31, ../../../resources/assets/sass/core/_predefine.scss */
+a {
+  text-decoration: none;
+  color: #28292b; }
+  /* line 34, ../../../resources/assets/sass/core/_predefine.scss */
+  a:hover {
+    text-decoration: underline;
+    color: #486589; }
+
+/* line 40, ../../../resources/assets/sass/core/_predefine.scss */
+img {
+  max-width: 100%;
+  height: auto; }
+  /* line 43, ../../../resources/assets/sass/core/_predefine.scss */
+  img.alignleft {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px; }
+  /* line 48, ../../../resources/assets/sass/core/_predefine.scss */
+  img.alignright {
+    float: right;
+    margin-left: 15px;
+    margin-bottom: 15px; }
+
+/* line 55, ../../../resources/assets/sass/core/_predefine.scss */
+.pagewrap {
+  *zoom: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px 5%;
+  width: 100%;
+  max-width: 960px;
+  margin: auto; }
+  /* line 38, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
+  .pagewrap:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+/* line 64, ../../../resources/assets/sass/core/_predefine.scss */
+nav ul, .menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  /* line 68, ../../../resources/assets/sass/core/_predefine.scss */
+  nav ul li, .menu ul li {
+    display: inline-block;
+    margin: 0 5px; }
+
+/* line 74, ../../../resources/assets/sass/core/_predefine.scss */
+h1 {
+  color: #486589;
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 10px 0;
+  line-height: 100%; }
+  /* line 74, ../../../resources/assets/sass/core/_predefine.scss */
+  h1 a {
+    color: #486589; }
+
+/* line 75, ../../../resources/assets/sass/core/_predefine.scss */
+h2 {
+  color: #444;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px 0;
+  line-height: 110%; }
+  /* line 75, ../../../resources/assets/sass/core/_predefine.scss */
+  h2 a {
+    color: #444; }
+
+/* line 76, ../../../resources/assets/sass/core/_predefine.scss */
+h3 {
+  color: #486589;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 15px 0;
+  line-height: 110%; }
+  /* line 76, ../../../resources/assets/sass/core/_predefine.scss */
+  h3 a {
+    color: #486589; }
+
+/* line 77, ../../../resources/assets/sass/core/_predefine.scss */
+h4 {
+  color: #28292b;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 24px 0 0 0;
+  line-height: 110%; }
+  /* line 77, ../../../resources/assets/sass/core/_predefine.scss */
+  h4 a {
+    color: #28292b; }
+
+/* line 78, ../../../resources/assets/sass/core/_predefine.scss */
+h5 {
+  color: #b7b7b7;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0 0 0;
+  line-height: 110%; }
+  /* line 78, ../../../resources/assets/sass/core/_predefine.scss */
+  h5 a {
+    color: #b7b7b7; }
+
+/* line 79, ../../../resources/assets/sass/core/_predefine.scss */
+h6 {
+  color: #486589;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  line-height: 110%; }
+  /* line 79, ../../../resources/assets/sass/core/_predefine.scss */
+  h6 a {
+    color: #486589; }
+
+/* line 80, ../../../resources/assets/sass/core/_predefine.scss */
+p {
+  margin: 10px 0 20px 0; }
+
+@media (min-width: 650px) {
+  /* line 83, ../../../resources/assets/sass/core/_predefine.scss */
+  h1 {
+    color: #486589;
+    font-family: "Montserrat", sans-serif;
+    font-size: 45px;
+    font-weight: 400;
+    margin: 15px 0;
+    line-height: 100%; }
+
+  /* line 84, ../../../resources/assets/sass/core/_predefine.scss */
+  h2 {
+    color: #444;
+    font-family: "Montserrat", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 15px 0;
+    line-height: 110%; }
+
+  /* line 85, ../../../resources/assets/sass/core/_predefine.scss */
+  h3 {
+    color: #486589;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 15px 0;
+    line-height: 110%; }
+
+  /* line 86, ../../../resources/assets/sass/core/_predefine.scss */
+  h4 {
+    color: #28292b;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 24px 0 0 0;
+    line-height: 110%; }
+
+  /* line 87, ../../../resources/assets/sass/core/_predefine.scss */
+  h5 {
+    color: #b7b7b7;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 15px 0 0 0;
+    line-height: 110%; }
+
+  /* line 88, ../../../resources/assets/sass/core/_predefine.scss */
+  h6 {
+    color: #486589;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 15px 0 0 0;
+    line-height: 110%; }
+
+  /* line 89, ../../../resources/assets/sass/core/_predefine.scss */
+  p {
+    margin: 10px 0 20px 0; } }
+@media (min-width: 1020px) {
+  /* line 93, ../../../resources/assets/sass/core/_predefine.scss */
+  h1 {
+    color: #486589;
+    font-family: "Montserrat", sans-serif;
+    font-size: 55px;
+    font-weight: 400;
+    margin: 20px 0;
+    line-height: 100%; }
+
+  /* line 94, ../../../resources/assets/sass/core/_predefine.scss */
+  h2 {
+    color: #444;
+    font-family: "Montserrat", sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    margin: 20px 0;
+    line-height: 110%; }
+
+  /* line 95, ../../../resources/assets/sass/core/_predefine.scss */
+  h3 {
+    color: #486589;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 15px 0;
+    line-height: 110%; }
+
+  /* line 96, ../../../resources/assets/sass/core/_predefine.scss */
+  h4 {
+    color: #28292b;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 24px 0 0 0;
+    line-height: 110%; }
+
+  /* line 97, ../../../resources/assets/sass/core/_predefine.scss */
+  h5 {
+    color: #b7b7b7;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 20px 0 0 0;
+    line-height: 110%; }
+
+  /* line 98, ../../../resources/assets/sass/core/_predefine.scss */
+  h6 {
+    color: #486589;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 20px 0 0 0;
+    line-height: 110%; }
+
+  /* line 99, ../../../resources/assets/sass/core/_predefine.scss */
+  p {
+    margin: 10px 0 20px 0; }
+
+  /* line 100, ../../../resources/assets/sass/core/_predefine.scss */
+  .pagewrap {
+    padding: 10px 0; } }
+/* line 103, ../../../resources/assets/sass/core/_predefine.scss */
+form {
+  margin: 0;
+  *zoom: 1; }
+  /* line 105, ../../../resources/assets/sass/core/_predefine.scss */
+  form input, form textarea, form select {
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 25px;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #28292b;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+    /* line 61, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+    form input:-moz-placeholder, form textarea:-moz-placeholder, form select:-moz-placeholder {
+      color: #999; }
+    /* line 64, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+    form input::-moz-placeholder, form textarea::-moz-placeholder, form select::-moz-placeholder {
+      color: #999; }
+    /* line 67, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+    form input:-ms-input-placeholder, form textarea:-ms-input-placeholder, form select:-ms-input-placeholder {
+      color: #999; }
+    /* line 56, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+    form input::-webkit-input-placeholder, form textarea::-webkit-input-placeholder, form select::-webkit-input-placeholder {
+      color: #999; }
+  /* line 121, ../../../resources/assets/sass/core/_predefine.scss */
+  form input[type="checkbox"] {
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin: 0;
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: middle; }
+  /* line 132, ../../../resources/assets/sass/core/_predefine.scss */
+  form label {
+    margin: 0;
+    padding: 5px 0;
+    display: inline-block;
+    clear: both;
+    vertical-align: middle; }
+  /* line 140, ../../../resources/assets/sass/core/_predefine.scss */
+  form textarea {
+    height: 100px; }
+    /* line 61, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+    form textarea:-moz-placeholder {
+      color: #999; }
+    /* line 64, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+    form textarea::-moz-placeholder {
+      color: #999; }
+    /* line 67, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+    form textarea:-ms-input-placeholder {
+      color: #999; }
+    /* line 56, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+    form textarea::-webkit-input-placeholder {
+      color: #999; }
+  /* line 148, ../../../resources/assets/sass/core/_predefine.scss */
+  form .error span {
+    display: block;
+    padding: 5px;
+    color: #ff0000; }
+  /* line 149, ../../../resources/assets/sass/core/_predefine.scss */
+  form .error input, form .error select, form .error textarea {
+    border-color: #ff0000; }
+  /* line 38, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
+  form:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+/* line 157, ../../../resources/assets/sass/core/_predefine.scss */
+.button, button, input[type="submit"], .btn {
+  display: inline-block;
+  position: relative;
+  background: #486589;
+  padding: 10px 25px;
+  min-width: auto;
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid #3f5978;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 0;
+  text-align: center;
+  text-decoration: none; }
+  /* line 173, ../../../resources/assets/sass/core/_predefine.scss */
+  .button:hover, button:hover, input[type="submit"]:hover, .btn:hover {
+    background: #ccc;
+    border-color: #bfbfbf;
+    color: #486589; }
+    /* line 177, ../../../resources/assets/sass/core/_predefine.scss */
+    .button:hover a, button:hover a, input[type="submit"]:hover a, .btn:hover a {
+      color: #486589; }
+  /* line 182, ../../../resources/assets/sass/core/_predefine.scss */
+  .button a, button a, input[type="submit"] a, .btn a {
+    position: relative;
+    display: block;
+    margin: -15px -30px;
+    padding: 15px 30px;
+    color: #fff;
+    text-decoration: none;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s; }
+    /* line 190, ../../../resources/assets/sass/core/_predefine.scss */
+    .button a img, button a img, input[type="submit"] a img, .btn a img {
+      vertical-align: middle; }
+  /* line 195, ../../../resources/assets/sass/core/_predefine.scss */
+  .button img, button img, input[type="submit"] img, .btn img {
+    display: inline-block;
+    vertical-align: middle;
+    border: none; }
+  /* line 203, ../../../resources/assets/sass/core/_predefine.scss */
+  .button.full-width, button.full-width, input[type="submit"].full-width, .btn.full-width {
+    display: block;
+    width: 100%;
+    box-sizing: border-box; }
+  /* line 209, ../../../resources/assets/sass/core/_predefine.scss */
+  .button.medium, button.medium, input[type="submit"].medium, .btn.medium {
+    display: inline-block;
+    min-width: 0;
+    padding: 5px 12px;
+    font-size: 14px;
+    margin: 5px 10px;
+    border: 2px solid #fff; }
+  /* line 218, ../../../resources/assets/sass/core/_predefine.scss */
+  .button.bg-color-1:hover, button.bg-color-1:hover, input[type="submit"].bg-color-1:hover, .btn.bg-color-1:hover {
+    background: #444 !important; }
+  /* line 221, ../../../resources/assets/sass/core/_predefine.scss */
+  .button.bg-color-3:hover, button.bg-color-3:hover, input[type="submit"].bg-color-3:hover, .btn.bg-color-3:hover {
+    background: #486589 !important; }
+  /* line 225, ../../../resources/assets/sass/core/_predefine.scss */
+  .button.icon-pdf, button.icon-pdf, input[type="submit"].icon-pdf, .btn.icon-pdf {
+    background: url("../images/icon-pdf.png");
+    background-size: contain;
+    background-position: 0 50%;
+    padding: 1px 0;
+    background-repeat: no-repeat;
+    padding: 0;
+    padding-left: 40px;
+    margin: 0;
+    color: #444;
+    font-size: inherit;
+    text-decoration: inherit;
+    text-align: left; }
+    /* line 238, ../../../resources/assets/sass/core/_predefine.scss */
+    .button.icon-pdf:hover, button.icon-pdf:hover, input[type="submit"].icon-pdf:hover, .btn.icon-pdf:hover {
+      color: #486589; }
+    /* line 239, ../../../resources/assets/sass/core/_predefine.scss */
+    .button.icon-pdf a, button.icon-pdf a, input[type="submit"].icon-pdf a, .btn.icon-pdf a {
+      color: #444;
+      text-decoration: underline; }
+      /* line 239, ../../../resources/assets/sass/core/_predefine.scss */
+      .button.icon-pdf a:hover, button.icon-pdf a:hover, input[type="submit"].icon-pdf a:hover, .btn.icon-pdf a:hover {
+        color: #486589; }
+
+/* line 172, ../../../resources/assets/sass/app/_settings.scss */
+body {
+  letter-spacing: 0.02em;
+  font-weight: normal; }
+
+/* line 2, ../../../resources/assets/sass/app/_setup.scss */
+.todo {
+  position: relative;
+  *zoom: 1;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e2e2e2; }
+  /* line 38, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
+  .todo:after {
+    content: "";
+    display: table;
+    clear: both; }
+  /* line 8, ../../../resources/assets/sass/app/_setup.scss */
+  .todo input[type="checkbox"] {
+    background-color: #efefef;
+    border-color: #bababa;
+    width: 19px;
+    height: 19px;
+    margin-right: 12px; }
+  /* line 16, ../../../resources/assets/sass/app/_setup.scss */
+  .todo input[type="checkbox"] {
+    display: none; }
+  /* line 20, ../../../resources/assets/sass/app/_setup.scss */
+  .todo input[type="checkbox"] + label {
+    display: inline-block;
+    background-color: #efefef;
+    border: 1px solid #bababa;
+    width: 19px;
+    height: 19px;
+    margin-right: 12px;
+    padding: 0;
+    border-radius: 4px;
+    float: left; }
+    /* line 30, ../../../resources/assets/sass/app/_setup.scss */
+    .todo input[type="checkbox"] + label .fa-check {
+      display: none;
+      margin: 3px;
+      color: #5e5e5e; }
+  /* line 38, ../../../resources/assets/sass/app/_setup.scss */
+  .todo input[type="checkbox"]:checked + label .fa-check {
+    display: block; }
+  /* line 43, ../../../resources/assets/sass/app/_setup.scss */
+  .todo strong {
+    color: #5e5e5e; }
+  /* line 44, ../../../resources/assets/sass/app/_setup.scss */
+  .todo p {
+    margin: 0;
+    padding-left: 35px;
+    padding-right: 200px;
+    word-break: break-all; }
+  /* line 50, ../../../resources/assets/sass/app/_setup.scss */
+  .todo .estimated {
+    position: absolute;
+    right: 40px;
+    top: 12px; }
+  /* line 55, ../../../resources/assets/sass/app/_setup.scss */
+  .todo .avatar {
+    background: #efefef;
+    border: 1px solid #e2e2e2;
+    border-radius: 100%;
+    position: absolute;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    margin: -4px 0 -4px 10px;
+    top: 12px; }
+  /* line 67, ../../../resources/assets/sass/app/_setup.scss */
+  .todo.priority-1 input[type="checkbox"] + label {
+    background-color: #efefef;
+    border-color: #bababa; }
+  /* line 73, ../../../resources/assets/sass/app/_setup.scss */
+  .todo.priority-2 input[type="checkbox"] + label {
+    background-color: #fbf286;
+    border-color: #cfc719; }
+  /* line 79, ../../../resources/assets/sass/app/_setup.scss */
+  .todo.priority-3 input[type="checkbox"] + label {
+    background-color: #fba948;
+    border-color: #c26d1f; }
+  /* line 85, ../../../resources/assets/sass/app/_setup.scss */
+  .todo.priority-4 input[type="checkbox"] + label {
+    background-color: #e06f6f;
+    border-color: #b63636; }
+    /* line 89, ../../../resources/assets/sass/app/_setup.scss */
+    .todo.priority-4 input[type="checkbox"] + label .fa-check {
+      color: #fff; }
+
+/* line 96, ../../../resources/assets/sass/app/_setup.scss */
+ul {
+  list-style: none;
+  padding: 0; }
+  /* line 99, ../../../resources/assets/sass/app/_setup.scss */
+  ul ul {
+    padding-left: 30px; }
+
+/* line 104, ../../../resources/assets/sass/app/_setup.scss */
+header {
+  padding: 15px 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  box-sizing: border-box;
+  background: #486589;
+  z-index: 10;
+  color: #fff; }
+  /* line 116, ../../../resources/assets/sass/app/_setup.scss */
+  header h1 {
+    color: #fff;
+    font-size: 20px !important;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.03em; }
+    /* line 123, ../../../resources/assets/sass/app/_setup.scss */
+    header h1 small {
+      font-weight: normal;
+      font-size: 60%;
+      letter-spacing: -0.01em;
+      margin-left: 10px; }
+
+/* line 131, ../../../resources/assets/sass/app/_setup.scss */
+aside {
+  background: #f9f9f9;
+  border-right: 1px solid #e7e7e7;
+  padding: 20px;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 350px;
+  bottom: 0px;
+  box-sizing: border-box;
+  overflow: auto;
+  font-size: 15px;
+  padding: 35px 60px;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none; }
+  /* line 145, ../../../resources/assets/sass/app/_setup.scss */
+  aside .user-info {
+    margin-left: -30px;
+    *zoom: 1;
+    margin-bottom: 30px; }
+    /* line 38, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
+    aside .user-info:after {
+      content: "";
+      display: table;
+      clear: both; }
+    /* line 151, ../../../resources/assets/sass/app/_setup.scss */
+    aside .user-info .picture, aside .user-info img {
+      border-radius: 100%;
+      width: 65px;
+      height: 65px;
+      display: inline-block;
+      float: left;
+      margin-right: 15px;
+      margin-top: -8px; }
+    /* line 161, ../../../resources/assets/sass/app/_setup.scss */
+    aside .user-info h2 {
+      font-size: 18px;
+      margin: 16px 0 3px 0; }
+    /* line 162, ../../../resources/assets/sass/app/_setup.scss */
+    aside .user-info h3 {
+      font-size: 15px;
+      margin: 0; }
+  /* line 165, ../../../resources/assets/sass/app/_setup.scss */
+  aside::-webkit-scrollbar {
+    width: 0 !important; }
+  /* line 169, ../../../resources/assets/sass/app/_setup.scss */
+  aside ul ul {
+    position: relative;
+    padding-left: 22px; }
+    /* line 172, ../../../resources/assets/sass/app/_setup.scss */
+    aside ul ul:before {
+      content: " ";
+      display: block;
+      position: absolute;
+      left: -0;
+      width: 1px;
+      background: #9c9c9c;
+      top: 0px;
+      bottom: 14px; }
+    /* line 183, ../../../resources/assets/sass/app/_setup.scss */
+    aside ul ul li {
+      position: relative; }
+      /* line 185, ../../../resources/assets/sass/app/_setup.scss */
+      aside ul ul li:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        left: -22px;
+        width: 10px;
+        height: 1px;
+        background: #9c9c9c;
+        top: 50%; }
+  /* line 198, ../../../resources/assets/sass/app/_setup.scss */
+  aside li a {
+    display: block;
+    padding: 5px 0; }
+    /* line 202, ../../../resources/assets/sass/app/_setup.scss */
+    aside li a .fa {
+      margin-right: 10px; }
+
+/* line 207, ../../../resources/assets/sass/app/_setup.scss */
+article {
+  padding: 10px 20px;
+  position: absolute;
+  top: 50px;
+  left: 350px;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 25px 60px; }

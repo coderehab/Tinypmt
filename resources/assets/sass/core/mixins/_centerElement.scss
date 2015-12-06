@@ -1,0 +1,27 @@
+@mixin centerElement($type) {
+    @if $type == "both"{
+        position:absolute;
+        top:50%;
+        left:50%;
+        @include translate(-50%, -50%);
+    }
+
+    @if $type == "horizontal"{
+        position:absolute;
+        left:50%;
+        @include translateX(-50%);
+    }
+
+    @if $type == "vertical"{
+        position:absolute;
+        top:50%;
+        @include translateY(-50%);
+    }
+
+    @if $type == "none"{
+        position:relative;
+        top:auto;
+        left:auto;
+        @include translate(0, 0);
+    }
+}

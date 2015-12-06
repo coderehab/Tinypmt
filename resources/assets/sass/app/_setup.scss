@@ -1,0 +1,217 @@
+
+.todo{
+    position:relative;
+    @include pie-clearfix;
+    padding:12px 10px;
+    border-bottom: 1px solid #e2e2e2;
+
+    input[type="checkbox"] {
+        background-color: #efefef;
+        border-color: #bababa;
+        width:19px;
+        height:19px;
+        margin-right: 12px;
+    }
+
+    input[type="checkbox"] {
+        display:none;
+    }
+
+    input[type="checkbox"] + label {
+        display:inline-block;
+        background-color: #efefef;
+        border:1px solid #bababa;
+        width:19px;
+        height:19px;
+        margin-right: 12px;
+        padding:0;
+        border-radius:4px;
+        float:left;
+        & .fa-check {
+            display: none;
+            margin:3px;
+            color:#5e5e5e;
+        }
+    }
+
+    input[type="checkbox"]:checked + label {
+        & .fa-check {
+            display: block;
+        }
+    }
+
+    strong{color:#5e5e5e}
+    p{
+        margin:0;
+        padding-left:35px;
+        padding-right:200px;
+        word-break: break-all;
+    }
+    .estimated{
+        position: absolute;
+        right:40px;
+        top:12px;
+    }
+    .avatar{
+        background: #efefef;
+        border:1px solid #e2e2e2;
+        border-radius: 100%;
+        position: absolute;
+        right:0;
+        width:24px;
+        height:24px;
+        margin: -4px 0 -4px 10px;
+        top:12px;
+    }
+   &.priority-1 {
+       input[type="checkbox"] + label {
+           background-color: #efefef;
+           border-color: #bababa;
+       }
+   }
+   &.priority-2 {
+       input[type="checkbox"] + label {
+           background-color: #fbf286;
+           border-color: #cfc719;
+       }
+   }
+   &.priority-3 {
+       input[type="checkbox"] + label {
+           background-color: #fba948;
+           border-color: #c26d1f;
+       }
+   }
+   &.priority-4 {
+       input[type="checkbox"] + label {
+           background-color: #e06f6f;
+           border-color: #b63636;
+
+           & .fa-check {
+               color:#fff
+           }
+       }
+   }
+}
+
+ul{
+    list-style: none;
+    padding:0;
+    ul{
+        padding-left:30px;
+    }
+}
+
+header{
+    padding:15px 20px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:50px;
+    box-sizing:border-box;
+    background:$color1;
+    z-index:10;
+    color:#fff;
+
+    h1{
+        color:#fff;
+        font-size:20px !important;
+        margin:0;
+        font-weight: 700;
+
+        letter-spacing: -0.03em;
+        small{
+            font-weight: normal;
+            font-size:60%;
+            letter-spacing: -0.01em;
+            margin-left:10px;
+        }
+    }
+}
+aside{
+    background:#f9f9f9;
+    border-right:1px solid #e7e7e7;
+    padding:20px;
+    position:absolute;
+    top:50px;
+    left:0;
+    width:350px;
+    bottom:0px;
+    box-sizing:border-box;
+    overflow:auto;
+    font-size:15px;
+    padding:35px 60px;
+
+    .user-info {
+
+        margin-left:-30px;
+        @include pie-clearfix();
+        margin-bottom:30px;
+
+        .picture, img {
+            border-radius: 100%;
+            width:65px;
+            height:65px;
+            display: inline-block;
+            float:left;
+            margin-right:15px;
+            margin-top:-8px;
+        }
+
+        h2{font-size:18px; margin:16px 0 3px 0;}
+        h3{font-size:15px; margin:0;}
+    }
+
+    &::-webkit-scrollbar { width: 0 !important }
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+
+    ul ul {
+        position: relative;
+        padding-left:22px;
+        &:before{
+            content: " ";
+            display: block;
+            position: absolute;
+            left:-0;
+            width:1px;
+            background: #9c9c9c;
+            top:0px;
+            bottom:14px;
+        }
+
+        li{
+            position: relative;
+            &:before{
+                content: " ";
+                display: block;
+                position: absolute;
+                left:-22px;
+                width:10px;
+                height: 1px;
+                background: #9c9c9c;
+                top:50%;
+            }
+        }
+    }
+
+    li a{
+        display: block;
+        padding: 5px 0;
+
+        .fa {
+            margin-right: 10px;
+        }
+    }
+}
+article{
+    padding:10px 20px;
+    position:absolute;
+    top:50px;
+    left:350px;
+    right:0;
+    bottom:0;
+    box-sizing:border-box;
+    overflow:auto;
+    padding:25px 60px;
+}
