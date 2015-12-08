@@ -18,7 +18,7 @@
 <ul>
 
     <?php $indent = 1; ?>
-    @foreach($projects as $project)
+    @foreach(Auth::user()->projects as $project)
 
     @if($project->indent>$indent) <ul> @endif
     @if($project->indent<$indent) </ul> @endif

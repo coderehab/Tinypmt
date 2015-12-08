@@ -100,46 +100,56 @@ class UserController extends Controller {
         //return Redirect::back();
     }
 
-    public function edit_user(){
+    public function edit_user($id){
         $view = View::make('user.edit');
         $view->title = 'Instellingen';
+        $view->user = User::find($id);
 
         return $view;
     }
 
-    public function save_user_settings(){
+    public function put_user($id){
         $input = Input::all();
 
         $password = $input['password'];
         $rules = array(
-            'first_name' => 'required',
-            'last_name' => 'required'
+            'firstname' => 'required',
+            'lastname' => 'required'
         );
 
-        if ($input['email'] != Auth::user()->email)
+        if ($input['email'] != User::find($id)->email)
             $rules['email'] = 'required|unique:users|email';
 
         $validator = Validator::make($input, $rules);
 
         if($validator->passes()){
 
-            $user = User::find(Auth::user()->id);
-            $user->first_name = $input['first_name'];
-            $user->last_name = $input['last_name'];
+            $user = User::find($id);
+            $user->firstname = $input['firstname'];
+            $user->lastname = $input['lastname'];
             $user->email = $input['email'];
 
             if ($password && Hash::make($password) != $user->password)
                 $user->password = Hash::make($password);
+
+            $user->monday_default_available = $input['monday_default_available'];
+            $user->tuesday_default_available = $input['tuesday_default_available'];
+            $user->wednesday_default_available = $input['wednesday_default_available'];
+            $user->thursday_default_available = $input['thursday_default_available'];
+            $user->friday_default_available = $input['friday_default_available'];
+            $user->saturday_default_available = $input['saturday_default_available'];
+            $user->sunday_default_available = $input['sunday_default_available'];
+
             $user->save();
 
-            return Redirect::route('homepage');
+            return Redirect::route('edit_user', $id);
         }else {
-            return Redirect::route('login')->withInput()->withErrors($validator);
+            return Redirect::route('edit_user', $id)->withInput()->withErrors($validator);
         }
     }
 
-    public function remove_user() {
-        User::find(Input::get('id'))->delete();
+    public function remove_user($id) {
+        User::find($id)->delete();
         return Redirect::back();
     }
 

@@ -4,14 +4,22 @@
 
 <h2>{{$active_project->name}}</h2>
 
+<h3>Projectinformatie</h3>
 
+<ul>
+    <li>Startdatum: {{date('Y-m-d')}}</li>
+    <li>Einddatum: {{$active_project->due_date}}</li>
+    <li>Benodigde uren: {{$active_project->estimated_time}}</li>
+
+</ul>
+
+<br />
 
 <form>
     <h4>Afspraken</h4>
     <ul class="tasklist">
         @foreach($active_project->todos as $todo)
-        @if($todo->date_string != '' && date ('G i s', strtotime($todo->due_date)) != "22 59 59")
-
+        @if($todo->due_date != '' && date('G i s', strtotime($todo->due_date)) != "0 00 00")
         {{ date('G i s',strtotime($todo->due_date))}}
         @include('partials.todo')
         @endif
@@ -22,11 +30,11 @@
     <ul class="tasklist">
         <?php $tmpdate = ""?>
         @foreach($active_project->todos as $todo)
-        @if($todo->date_string != '' && date ('G i s', strtotime($todo->due_date)) == "22 59 59")
-        @unless ($tmpdate == date('l j F',strtotime($todo->due_date)) )
-        <?php $tmpdate = date('l j F',strtotime($todo->due_date)) ?>
+        @if($todo->due_date != '' && date('G i s', strtotime($todo->due_date)) == "0 00 00")
+        @unless ($tmpdate == date('l j F - Y',strtotime($todo->due_date)) )
+        <?php $tmpdate = date('l j F - Y',strtotime($todo->due_date)) ?>
 
-        <h5>{{date('l j F',strtotime($todo->due_date))}}</h5>
+        <h5>{{date('l j F - Y',strtotime($todo->due_date))}}</h5>
         @endunless
 
 
@@ -39,7 +47,7 @@
     <ul class="tasklist">
 
         @foreach($active_project->todos as $todo)
-        @if($todo->date_string == '' && !$todo->checked)
+        @if($todo->due_date == '' && !$todo->checked)
         @include('partials.todo')
         @endif
         @endforeach

@@ -1,3 +1,29 @@
+.row {
+    @include container();
+    @include pie-clearfix();
+    @include box-sizing();
+}
+
+@for $i from 2 to 12 {
+    .cols-#{$i} {
+        @include span($i of 12 before);
+        &:first-child {
+            @include first;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    @for $i from 2 to 12 {
+        .cols-#{$i} {
+            @include span($i of 12 before);
+            &:first-child {
+                @include first;
+            }
+        }
+    }
+}
+
 
 .todo{
     position:relative;
@@ -114,6 +140,7 @@ header{
     color:#fff;
 
     h1{
+        float:left;
         color:#fff;
         font-size:20px !important;
         margin:0;
@@ -125,6 +152,17 @@ header{
             font-size:60%;
             letter-spacing: -0.01em;
             margin-left:10px;
+        }
+    }
+
+    .menu {
+        margin:0;
+        float:right;
+        li{
+            float:left;
+            margin-left: 10px;
+            a, a:hover{color:#fff}
+
         }
     }
 }
