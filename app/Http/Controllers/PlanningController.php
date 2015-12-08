@@ -28,12 +28,13 @@ class PlanningController extends Controller
 
         $project->save();
 
-        $startDate = date('Y-m-d', strtotime("+1 days"));
+        $startDate = date("Y-m-d H:i:s ", strtotime("Tomorrow 08:00"));
+
         $previousTime = 0;
         foreach($todos as $todo) {
 
             $previousTime += $todo->estimated_time;
-            $todo->due_date = $this->calcDate($startDate, $previousTime);
+            $todo->due_date = $this->calcDate($startDate, $previousTime, $todo->estimated_time);
             $todo->save();
 
 
@@ -41,17 +42,19 @@ class PlanningController extends Controller
 
     }
 
-    private function calcDate($startDate, $curTime) {
+    private function calcDate($startDate, $curTime, $estimated) {
 
-        $days_to_add = ($curTime - $curTime%8) / 8;
-        $hours_to_add = $curTime%8;
+        $days_to_add = round((ceil($curTime) - ($curTime%8)) / 8);
+        $hours_to_add = ceil($curTime)%8;
+
+        if($hours_to_add + $estimated > 8) $hours_to_add += (24 - $hours_to_add);
 
         $totalToAdd = strtotime(sprintf("+%d hours", $hours_to_add)) + strtotime(sprintf("+%d days", $days_to_add));
         $totalToAdd -= strtotime(date('Y-m-d'));
 
         //ignore weekend
-        if (date("w", $totalToAdd) == 6) $totalToAdd+=strtotime("+1 days")-strtotime(date('Y-m-d'));
-        if (date("w", $totalToAdd) == 0) $totalToAdd+=strtotime("+1 days")-strtotime(date('Y-m-d'));
+        //if (date("w", $totalToAdd) == 6) $totalToAdd+=strtotime("+1 days")-strtotime(date('Y-m-d'));
+        //if (date("w", $totalToAdd) == 0) $totalToAdd+=strtotime("+1 days")-strtotime(date('Y-m-d'));
 
         $date = date('Y-m-d', $totalToAdd);
 
