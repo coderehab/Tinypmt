@@ -23,7 +23,6 @@ class PlanningController extends Controller
         $project->estimated_time = $estimated_time;
         $estimated_time = $estimated_time/8;
 
-
         $now = date("Y-m-d");
         $project->due_date = date('Y-m-d', strtotime(sprintf("+%d days", $estimated_time)));
 
@@ -33,10 +32,11 @@ class PlanningController extends Controller
         $previousTime = 0;
         foreach($todos as $todo) {
 
+            $previousTime += $todo->estimated_time;
             $todo->due_date = $this->calcDate($startDate, $previousTime);
             $todo->save();
 
-            $previousTime += $todo->estimated_time;
+
         }
 
     }
@@ -47,34 +47,14 @@ class PlanningController extends Controller
         $hours_to_add = $curTime%8;
 
         $totalToAdd = strtotime(sprintf("+%d hours", $hours_to_add)) + strtotime(sprintf("+%d days", $days_to_add));
-
-
         $totalToAdd -= strtotime(date('Y-m-d'));
-        if (date("w", $totalToAdd) == 6){
-            $totalToAdd+=strtotime("+1 days")-strtotime(date('Y-m-d'));
 
-        }
-        if (date("w", $totalToAdd) == 0){
-            $totalToAdd+=strtotime("+1 days")-strtotime(date('Y-m-d'));
-        }
-
+        //ignore weekend
+        if (date("w", $totalToAdd) == 6) $totalToAdd+=strtotime("+1 days")-strtotime(date('Y-m-d'));
+        if (date("w", $totalToAdd) == 0) $totalToAdd+=strtotime("+1 days")-strtotime(date('Y-m-d'));
 
         $date = date('Y-m-d', $totalToAdd);
 
-
         return $date;
-    }
-
-    private function randomDate($start_date, $end_date)
-    {
-        // Convert to timetamps
-        $min = strtotime($start_date);
-        $max = strtotime($end_date);
-
-        // Generate random number using above bounds
-        $val = rand($min, $max);
-
-        // Convert back to desired date format
-        return date('Y-m-d', $val);
     }
 }
