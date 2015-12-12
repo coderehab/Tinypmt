@@ -16,42 +16,47 @@ class User extends Model implements AuthenticatableContract,
 AuthorizableContract,
 CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+	use Authenticatable, Authorizable, CanResetPassword;
 
-    /**
+	/**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'users';
+	protected $table = 'users';
 
-    /**
+	/**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password'];
 
-    /**
+	/**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+	protected $hidden = ['password', 'remember_token'];
 
-    public function getGravatarAttribute()
-    {
-        $hash = md5(strtolower(trim($this->attributes['email'])));
-        return "http://www.gravatar.com/avatar/$hash";
-    }
+	public function getGravatarAttribute()
+	{
+		$hash = md5(strtolower(trim($this->attributes['email'])));
+		return "http://www.gravatar.com/avatar/$hash";
+	}
 
-    public function getFullnameAttribute()
-    {
-        return $this->attributes['firstname'] . ' ' . $this->attributes['lastname'];
-    }
+	public function getFullnameAttribute()
+	{
+		return $this->attributes['firstname'] . ' ' . $this->attributes['lastname'];
+	}
 
-    public function getProjectsAttribute()
-    {
-        return Project::all();
-    }
+	public function getProjectsAttribute()
+	{
+		return Project::all();
+	}
+
+	public function getAvailabilityAttribute()
+	{
+		return $this->hasMany('App\AvailabilityTimeSheet');
+	}
 }

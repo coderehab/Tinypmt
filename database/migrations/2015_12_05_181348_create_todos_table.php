@@ -45,7 +45,6 @@ class CreateTodosTable extends Migration
             $table->float('estimated_time');
             $table->string('date_checked')->nullable();
 
-            $table->rememberToken();
             $table->timestamps();
         });
     }
