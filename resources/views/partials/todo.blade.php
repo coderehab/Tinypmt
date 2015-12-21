@@ -6,7 +6,8 @@
     </div>
     <p>{{$todo->content}}</p>
 
-    <span class='avatar'></span>
+    <span class='avatar' style="background-image:url({{($todo->user) ? $todo->user->gravatar : ''}})">
+    </span>
     <span class='estimated'>Geschatte tijd: <strong>{{$todo->estimated_time}} uur</strong></span>
 
 </li>

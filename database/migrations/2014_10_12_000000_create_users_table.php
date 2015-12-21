@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->string('timezone', 60);
             $table->integer('is_deleted');
+            $table->integer('is_personel');
             $table->rememberToken();
             $table->timestamps();
 

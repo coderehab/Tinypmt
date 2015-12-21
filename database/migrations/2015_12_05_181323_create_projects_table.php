@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->integer('todoist_id');
             $table->integer('user_id');
             $table->string('name');
+            $table->integer('priority');
 
             $table->integer('collapsed');
             $table->integer('inbox_project');

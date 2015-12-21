@@ -736,6 +736,9 @@ body {
   /* line 81, ../../../resources/assets/sass/app/_setup.scss */
   .todo .avatar {
     background: #efefef;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
     border: 1px solid #e2e2e2;
     border-radius: 100%;
     position: absolute;
@@ -744,35 +747,35 @@ body {
     height: 24px;
     margin: -4px 0 -4px 10px;
     top: 12px; }
-  /* line 93, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 96, ../../../resources/assets/sass/app/_setup.scss */
   .todo.priority-1 input[type="checkbox"] + label {
     background-color: #efefef;
     border-color: #bababa; }
-  /* line 99, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 102, ../../../resources/assets/sass/app/_setup.scss */
   .todo.priority-2 input[type="checkbox"] + label {
     background-color: #fbf286;
     border-color: #cfc719; }
-  /* line 105, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 108, ../../../resources/assets/sass/app/_setup.scss */
   .todo.priority-3 input[type="checkbox"] + label {
     background-color: #fba948;
     border-color: #c26d1f; }
-  /* line 111, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 114, ../../../resources/assets/sass/app/_setup.scss */
   .todo.priority-4 input[type="checkbox"] + label {
     background-color: #e06f6f;
     border-color: #b63636; }
-    /* line 115, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 118, ../../../resources/assets/sass/app/_setup.scss */
     .todo.priority-4 input[type="checkbox"] + label .fa-check {
       color: #fff; }
 
-/* line 122, ../../../resources/assets/sass/app/_setup.scss */
+/* line 125, ../../../resources/assets/sass/app/_setup.scss */
 ul {
   list-style: none;
   padding: 0; }
-  /* line 125, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 128, ../../../resources/assets/sass/app/_setup.scss */
   ul ul {
     padding-left: 30px; }
 
-/* line 130, ../../../resources/assets/sass/app/_setup.scss */
+/* line 133, ../../../resources/assets/sass/app/_setup.scss */
 header {
   padding: 15px 20px;
   position: absolute;
@@ -784,7 +787,7 @@ header {
   background: #486589;
   z-index: 10;
   color: #fff; }
-  /* line 142, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 145, ../../../resources/assets/sass/app/_setup.scss */
   header h1 {
     float: left;
     color: #fff;
@@ -792,25 +795,25 @@ header {
     margin: 0;
     font-weight: 700;
     letter-spacing: -0.03em; }
-    /* line 150, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 153, ../../../resources/assets/sass/app/_setup.scss */
     header h1 small {
       font-weight: normal;
       font-size: 60%;
       letter-spacing: -0.01em;
       margin-left: 10px; }
-  /* line 158, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 161, ../../../resources/assets/sass/app/_setup.scss */
   header .menu {
     margin: 0;
     float: right; }
-    /* line 161, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 164, ../../../resources/assets/sass/app/_setup.scss */
     header .menu li {
       float: left;
       margin-left: 10px; }
-      /* line 164, ../../../resources/assets/sass/app/_setup.scss */
+      /* line 167, ../../../resources/assets/sass/app/_setup.scss */
       header .menu li a, header .menu li a:hover {
         color: #fff; }
 
-/* line 169, ../../../resources/assets/sass/app/_setup.scss */
+/* line 172, ../../../resources/assets/sass/app/_setup.scss */
 aside {
   background: #f9f9f9;
   border-right: 1px solid #e7e7e7;
@@ -826,7 +829,7 @@ aside {
   padding: 35px 60px;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; }
-  /* line 183, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 186, ../../../resources/assets/sass/app/_setup.scss */
   aside .user-info {
     margin-left: -30px;
     *zoom: 1;
@@ -836,7 +839,7 @@ aside {
       content: "";
       display: table;
       clear: both; }
-    /* line 189, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 192, ../../../resources/assets/sass/app/_setup.scss */
     aside .user-info .picture, aside .user-info img {
       border-radius: 100%;
       width: 65px;
@@ -845,22 +848,22 @@ aside {
       float: left;
       margin-right: 15px;
       margin-top: -8px; }
-    /* line 199, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 202, ../../../resources/assets/sass/app/_setup.scss */
     aside .user-info h2 {
       font-size: 18px;
       margin: 16px 0 3px 0; }
-    /* line 200, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 203, ../../../resources/assets/sass/app/_setup.scss */
     aside .user-info h3 {
       font-size: 15px;
       margin: 0; }
-  /* line 203, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 206, ../../../resources/assets/sass/app/_setup.scss */
   aside::-webkit-scrollbar {
     width: 0 !important; }
-  /* line 207, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 210, ../../../resources/assets/sass/app/_setup.scss */
   aside ul ul {
     position: relative;
     padding-left: 22px; }
-    /* line 210, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 213, ../../../resources/assets/sass/app/_setup.scss */
     aside ul ul:before {
       content: " ";
       display: block;
@@ -870,10 +873,10 @@ aside {
       background: #9c9c9c;
       top: 0px;
       bottom: 14px; }
-    /* line 221, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 224, ../../../resources/assets/sass/app/_setup.scss */
     aside ul ul li {
       position: relative; }
-      /* line 223, ../../../resources/assets/sass/app/_setup.scss */
+      /* line 226, ../../../resources/assets/sass/app/_setup.scss */
       aside ul ul li:before {
         content: " ";
         display: block;
@@ -883,15 +886,15 @@ aside {
         height: 1px;
         background: #9c9c9c;
         top: 50%; }
-  /* line 236, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 239, ../../../resources/assets/sass/app/_setup.scss */
   aside li a {
     display: block;
     padding: 5px 0; }
-    /* line 240, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 243, ../../../resources/assets/sass/app/_setup.scss */
     aside li a .fa {
       margin-right: 10px; }
 
-/* line 245, ../../../resources/assets/sass/app/_setup.scss */
+/* line 248, ../../../resources/assets/sass/app/_setup.scss */
 article {
   padding: 10px 20px;
   position: absolute;

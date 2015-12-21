@@ -80,6 +80,9 @@
     }
     .avatar{
         background: #efefef;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50%;
         border:1px solid #e2e2e2;
         border-radius: 100%;
         position: absolute;

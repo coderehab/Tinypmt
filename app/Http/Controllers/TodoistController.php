@@ -170,6 +170,7 @@ class TodoistController extends Controller
 
 			$cr_project->todoist_id = $project->id;
 			$cr_project->name = $project->name;
+			$cr_project->priority = 1;
 			$cr_project->user_id = $project->user_id;
 			$cr_project->collapsed = $project->collapsed;
 
