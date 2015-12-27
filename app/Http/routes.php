@@ -23,16 +23,24 @@ Route::group(array('before' => 'auth'), function(){
     Route::post('/edit/user/{id}', array('as'=>'update_user', 'uses'=>'UserController@put_user'));
     Route::get('/delete/user/{id}', array('as'=>'remove_user', 'uses'=>'UserController@remove_user'));
 
-
     Route::get('/settings', array('as'=>'settings', 'uses'=>'AppController@get_settings'));
     Route::get('/settings/team', array('as'=>'settings_team', 'uses'=>'AppController@get_team_settings'));
-    Route::get('/settings/labels', array('as'=>'settings_labels', 'uses'=>'AppController@get_labels_settings'));
+
+    Route::get('/settings/labels', array('as'=>'settings_labels', 'uses'=>'LabelController@get_index'));
+    Route::post('/settings/labels', array('as'=>'save_label', 'uses'=>'LabelController@post_label'));
+    Route::get('/settings/labels/remove/{id}', array('as'=>'remove_label', 'uses'=>'LabelController@remove_label'));
+    Route::get('/settings/user/label/remove/{user_id}/{label_id}', array('as'=>'remove_label_from_user', 'uses'=>'LabelController@remove_label_from_user'));
+    Route::post('/settings/user/label/add/{user_id}/', array('as'=>'add_label_to_user', 'uses'=>'LabelController@add_label_to_user'));
 
     Route::get('/', ['as' => 'homepage', 'uses' => 'AppController@get_index']);
     Route::get('/project/{id}', ['as' => 'project_single', 'uses' => 'ProjectController@get_single']);
 
     Route::get('/sync', ['as' => 'todoist_sync', 'uses' => 'TodoistController@syncdata']);
+    Route::get('/update_planning', ['as' => 'update_planning', 'uses' => 'PlanningController@updatePlanning']);
+
     Route::get('todoist', ['as' => 'todoist', 'uses' => 'TodoistController@test']);
     Route::get('login/authorized', ['as' => 'todoist', 'uses' => 'TodoistController@authorized']);
+
+    Route::post('todo/estimate/{id}', ['as' => 'save_todo_estimate', 'uses' => 'TaskController@update_estimate']);
 
 });

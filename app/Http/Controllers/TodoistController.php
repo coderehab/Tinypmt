@@ -10,6 +10,7 @@ use Hash;
 use App\Project;
 use App\Todo;
 use App\User;
+use App\Label;
 use App\AvailabilityTimeSheet;
 
 use GuzzleHttp\Client;
@@ -44,8 +45,8 @@ class TodoistController extends Controller
 		$client = new Client();
 		$response = $client->request('POST', 'https://todoist.com/API/v6/sync', [
 			"form_params" => [
-				"token"=>"008d2b4c885c1cfa2519476394b4df431320971f",
-				"seq_no"=>"0" ,
+                "token"=>"dbadf3381fc34496c555e87111cd0b4d7d9eecee",
+				"seq_no"=> uniqid() ,
 				"resource_types"=> '["all"]'
 			]
 		]);
@@ -63,20 +64,26 @@ class TodoistController extends Controller
 		}));
 
 		$todos = $data->Items;
+		$labels = $data->Labels;
 		$user = $data->User;
 		$collaborators = $data->Collaborators;
+
+        var_dump($todos);
 
 		$this->user = $user;
 		$this->collaborators = $collaborators;
 		$this->projects = $projects;
 		$this->todos = $todos;
+		$this->labels = $labels;
 
+        $this->updateLabels();
 		$this->updateUser();
 		$this->updateConnectedUsers();
 		$this->updateProductList();
 		$this->updateTodoList();
 
-		return "done";
+
+		return Redirect::back();
 	}
 
 	private function updateConnectedUsers(){
@@ -183,9 +190,26 @@ class TodoistController extends Controller
 			$cr_project->save();
 		}
 	}
+
+
+	private function updateLabels(){
+		foreach($this->labels as $label) {
+			$cr_label = Label::where('todoist_id', $label->id)->first();
+			if(!$cr_label) $cr_label = new Label();
+
+			$cr_label->todoist_id = $label->id;
+			$cr_label->uid = $label->uid;
+            $cr_label->name = $label->name;
+			$cr_label->color = $label->color;
+            $cr_label->is_deleted = $label->is_deleted;
+
+			$cr_label->save();
+		}
+	}
+
 	private function updateTodoList(){
 		foreach($this->todos as $todo) {
-			$cr_todo = Todo::where('todoist_id', '=', $todo->id)->first();
+			$cr_todo = Todo::where('todoist_id', $todo->id)->first();
 			if(!$cr_todo) $cr_todo = new todo();
 
 			$cr_todo->todoist_id = $todo->id;
@@ -201,20 +225,24 @@ class TodoistController extends Controller
 			$cr_todo->date_lang = $todo->date_lang ;
 			$cr_todo->indent = $todo->indent ;
 			$cr_todo->is_deleted = $todo->is_deleted ;
-			$cr_todo->priority = $todo->priority ;
+			$cr_todo->priority = $todo->priority ;;
+
 			$cr_todo->responsible_uid = $todo->responsible_uid ;
 			$cr_todo->project_id = $todo->project_id ;
 			$cr_todo->collapsed = $todo->collapsed ;
-			$cr_todo->date_string = $todo->date_string ;
+			//$cr_todo->date_string = $todo->date_string ;
 			$cr_todo->is_archived = $todo->is_archived ;
 			$cr_todo->item_order = $todo->item_order ;
-			$cr_todo->due_date_utc = $todo->due_date_utc ;
-
-
+			//$cr_todo->due_date_utc = $todo->due_date_utc ;
 			$cr_todo->date_checked = "" ;
-			$cr_todo->estimated_time = rand(0,80)/10;
+			//$cr_todo->estimated_time = 0;
 
 			$cr_todo->save();
+
+            foreach($todo->labels as $label) {
+                $label = Label::where('todoist_id', $label)->first();
+                $cr_todo->labels()->attach($label->id);
+            }
 		}
 	}
 }

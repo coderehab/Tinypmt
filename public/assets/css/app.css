@@ -679,7 +679,24 @@ body {
     /* line 20, ../../../resources/assets/sass/app/_setup.scss */
     .cols-11:first-child {
       margin-left: 0; } }
-/* line 28, ../../../resources/assets/sass/app/_setup.scss */
+/* line 27, ../../../resources/assets/sass/app/_setup.scss */
+table.list {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0; }
+  /* line 31, ../../../resources/assets/sass/app/_setup.scss */
+  table.list th, table.list td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px 2%; }
+    /* line 35, ../../../resources/assets/sass/app/_setup.scss */
+    table.list th img, table.list td img {
+      max-width: 100px;
+      max-height: 50px; }
+  /* line 40, ../../../resources/assets/sass/app/_setup.scss */
+  table.list th {
+    padding-bottom: 1%; }
+
+/* line 43, ../../../resources/assets/sass/app/_setup.scss */
 .todo {
   position: relative;
   *zoom: 1;
@@ -690,17 +707,17 @@ body {
     content: "";
     display: table;
     clear: both; }
-  /* line 34, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 49, ../../../resources/assets/sass/app/_setup.scss */
   .todo input[type="checkbox"] {
     background-color: #efefef;
     border-color: #bababa;
     width: 19px;
     height: 19px;
     margin-right: 12px; }
-  /* line 42, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 57, ../../../resources/assets/sass/app/_setup.scss */
   .todo input[type="checkbox"] {
     display: none; }
-  /* line 46, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 61, ../../../resources/assets/sass/app/_setup.scss */
   .todo input[type="checkbox"] + label {
     display: inline-block;
     background-color: #efefef;
@@ -711,29 +728,42 @@ body {
     padding: 0;
     border-radius: 4px;
     float: left; }
-    /* line 56, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 71, ../../../resources/assets/sass/app/_setup.scss */
     .todo input[type="checkbox"] + label .fa-check {
       display: none;
       margin: 3px;
       color: #5e5e5e; }
-  /* line 64, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 79, ../../../resources/assets/sass/app/_setup.scss */
   .todo input[type="checkbox"]:checked + label .fa-check {
     display: block; }
-  /* line 69, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 83, ../../../resources/assets/sass/app/_setup.scss */
+  .todo .estimate-input {
+    position: absolute;
+    right: 0;
+    top: -12px;
+    width: 65px;
+    padding: 7px 10px; }
+  /* line 90, ../../../resources/assets/sass/app/_setup.scss */
   .todo strong {
     color: #5e5e5e; }
-  /* line 70, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 91, ../../../resources/assets/sass/app/_setup.scss */
   .todo p {
     margin: 0;
     padding-left: 35px;
     padding-right: 200px;
     word-break: break-all; }
-  /* line 76, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 96, ../../../resources/assets/sass/app/_setup.scss */
+    .todo p label {
+      display: inline;
+      color: #486589;
+      padding-left: 10px; }
+  /* line 102, ../../../resources/assets/sass/app/_setup.scss */
   .todo .estimated {
     position: absolute;
     right: 40px;
-    top: 12px; }
-  /* line 81, ../../../resources/assets/sass/app/_setup.scss */
+    top: 13px;
+    padding-right: 11px; }
+  /* line 108, ../../../resources/assets/sass/app/_setup.scss */
   .todo .avatar {
     background: #efefef;
     background-repeat: no-repeat;
@@ -747,35 +777,35 @@ body {
     height: 24px;
     margin: -4px 0 -4px 10px;
     top: 12px; }
-  /* line 96, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 123, ../../../resources/assets/sass/app/_setup.scss */
   .todo.priority-1 input[type="checkbox"] + label {
     background-color: #efefef;
     border-color: #bababa; }
-  /* line 102, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 129, ../../../resources/assets/sass/app/_setup.scss */
   .todo.priority-2 input[type="checkbox"] + label {
     background-color: #fbf286;
     border-color: #cfc719; }
-  /* line 108, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 135, ../../../resources/assets/sass/app/_setup.scss */
   .todo.priority-3 input[type="checkbox"] + label {
     background-color: #fba948;
     border-color: #c26d1f; }
-  /* line 114, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 141, ../../../resources/assets/sass/app/_setup.scss */
   .todo.priority-4 input[type="checkbox"] + label {
     background-color: #e06f6f;
     border-color: #b63636; }
-    /* line 118, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 145, ../../../resources/assets/sass/app/_setup.scss */
     .todo.priority-4 input[type="checkbox"] + label .fa-check {
       color: #fff; }
 
-/* line 125, ../../../resources/assets/sass/app/_setup.scss */
+/* line 152, ../../../resources/assets/sass/app/_setup.scss */
 ul {
   list-style: none;
   padding: 0; }
-  /* line 128, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 155, ../../../resources/assets/sass/app/_setup.scss */
   ul ul {
     padding-left: 30px; }
 
-/* line 133, ../../../resources/assets/sass/app/_setup.scss */
+/* line 160, ../../../resources/assets/sass/app/_setup.scss */
 header {
   padding: 15px 20px;
   position: absolute;
@@ -787,7 +817,7 @@ header {
   background: #486589;
   z-index: 10;
   color: #fff; }
-  /* line 145, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 172, ../../../resources/assets/sass/app/_setup.scss */
   header h1 {
     float: left;
     color: #fff;
@@ -795,25 +825,25 @@ header {
     margin: 0;
     font-weight: 700;
     letter-spacing: -0.03em; }
-    /* line 153, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 180, ../../../resources/assets/sass/app/_setup.scss */
     header h1 small {
       font-weight: normal;
       font-size: 60%;
       letter-spacing: -0.01em;
       margin-left: 10px; }
-  /* line 161, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 188, ../../../resources/assets/sass/app/_setup.scss */
   header .menu {
     margin: 0;
     float: right; }
-    /* line 164, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 191, ../../../resources/assets/sass/app/_setup.scss */
     header .menu li {
       float: left;
       margin-left: 10px; }
-      /* line 167, ../../../resources/assets/sass/app/_setup.scss */
+      /* line 194, ../../../resources/assets/sass/app/_setup.scss */
       header .menu li a, header .menu li a:hover {
         color: #fff; }
 
-/* line 172, ../../../resources/assets/sass/app/_setup.scss */
+/* line 199, ../../../resources/assets/sass/app/_setup.scss */
 aside {
   background: #f9f9f9;
   border-right: 1px solid #e7e7e7;
@@ -829,7 +859,7 @@ aside {
   padding: 35px 60px;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; }
-  /* line 186, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 213, ../../../resources/assets/sass/app/_setup.scss */
   aside .user-info {
     margin-left: -30px;
     *zoom: 1;
@@ -839,7 +869,7 @@ aside {
       content: "";
       display: table;
       clear: both; }
-    /* line 192, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 219, ../../../resources/assets/sass/app/_setup.scss */
     aside .user-info .picture, aside .user-info img {
       border-radius: 100%;
       width: 65px;
@@ -848,22 +878,22 @@ aside {
       float: left;
       margin-right: 15px;
       margin-top: -8px; }
-    /* line 202, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 229, ../../../resources/assets/sass/app/_setup.scss */
     aside .user-info h2 {
       font-size: 18px;
       margin: 16px 0 3px 0; }
-    /* line 203, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 230, ../../../resources/assets/sass/app/_setup.scss */
     aside .user-info h3 {
       font-size: 15px;
       margin: 0; }
-  /* line 206, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 233, ../../../resources/assets/sass/app/_setup.scss */
   aside::-webkit-scrollbar {
     width: 0 !important; }
-  /* line 210, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 237, ../../../resources/assets/sass/app/_setup.scss */
   aside ul ul {
     position: relative;
     padding-left: 22px; }
-    /* line 213, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 240, ../../../resources/assets/sass/app/_setup.scss */
     aside ul ul:before {
       content: " ";
       display: block;
@@ -873,10 +903,10 @@ aside {
       background: #9c9c9c;
       top: 0px;
       bottom: 14px; }
-    /* line 224, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 251, ../../../resources/assets/sass/app/_setup.scss */
     aside ul ul li {
       position: relative; }
-      /* line 226, ../../../resources/assets/sass/app/_setup.scss */
+      /* line 253, ../../../resources/assets/sass/app/_setup.scss */
       aside ul ul li:before {
         content: " ";
         display: block;
@@ -886,15 +916,15 @@ aside {
         height: 1px;
         background: #9c9c9c;
         top: 50%; }
-  /* line 239, ../../../resources/assets/sass/app/_setup.scss */
+  /* line 266, ../../../resources/assets/sass/app/_setup.scss */
   aside li a {
     display: block;
     padding: 5px 0; }
-    /* line 243, ../../../resources/assets/sass/app/_setup.scss */
+    /* line 270, ../../../resources/assets/sass/app/_setup.scss */
     aside li a .fa {
       margin-right: 10px; }
 
-/* line 248, ../../../resources/assets/sass/app/_setup.scss */
+/* line 275, ../../../resources/assets/sass/app/_setup.scss */
 article {
   padding: 10px 20px;
   position: absolute;
@@ -905,3 +935,27 @@ article {
   box-sizing: border-box;
   overflow: auto;
   padding: 25px 60px; }
+
+/* line 287, ../../../resources/assets/sass/app/_setup.scss */
+#user_labels label {
+  position: relative;
+  display: inline-block;
+  background: #486589;
+  color: #fff;
+  padding: 4px 10px;
+  margin-right: 30px; }
+  /* line 294, ../../../resources/assets/sass/app/_setup.scss */
+  #user_labels label .remove {
+    background: #aaa;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    bottom: 0;
+    width: 25px; }
+    /* line 301, ../../../resources/assets/sass/app/_setup.scss */
+    #user_labels label .remove a {
+      display: block;
+      padding: 3px 9px; }
+    /* line 306, ../../../resources/assets/sass/app/_setup.scss */
+    #user_labels label .remove:hover a {
+      color: #fff; }

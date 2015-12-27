@@ -23,6 +23,8 @@ class CreateTodosTable extends Migration
             $table->integer('responsible_uid')->nullable();
 
             $table->text('content');
+            $table->text('labels');
+
             $table->integer('checked');
             $table->integer('collapsed');
             $table->string('day_order');

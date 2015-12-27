@@ -8,6 +8,7 @@ use Hash;
 use Validator;
 use Redirect;
 use App\User;
+use App\Label;
 
 class UserController extends Controller {
 
@@ -104,6 +105,7 @@ class UserController extends Controller {
 		$view = View::make('user.edit');
 		$view->title = 'Instellingen';
 		$view->user = User::find($id);
+        $view->available_labels = Label::all()->lists("name", "id");
 
 		return $view;
 	}

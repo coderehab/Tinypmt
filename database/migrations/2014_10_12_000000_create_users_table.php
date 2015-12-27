@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
+            $table->text('labels');
+
             //Extended (not available with todoist)
             $table->float('monday_default_available');
             $table->float('tuesday_default_available');

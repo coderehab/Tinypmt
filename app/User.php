@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 use App\Project;
+use App\Label;
 
 class User extends Model implements AuthenticatableContract,
 AuthorizableContract,
@@ -39,7 +40,11 @@ CanResetPasswordContract
      */
 	protected $hidden = ['password', 'remember_token'];
 
-	public function getGravatarAttribute()
+	public function labels() {
+        return $this->belongsToMany('App\Label');
+    }
+
+    public function getGravatarAttribute()
 	{
 		$hash = md5(strtolower(trim($this->attributes['email'])));
 		return "http://www.gravatar.com/avatar/$hash";

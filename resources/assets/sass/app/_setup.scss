@@ -24,6 +24,21 @@
     }
 }
 
+table.list {
+    width: 100%;
+    border-collapse: collapse;
+    margin:20px 0;
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 8px 2%;
+        //text-align: left;
+        img {
+            max-width: 100px;
+            max-height:50px;
+        }
+    }
+    th {padding-bottom:1%}
+}
 
 .todo{
     position:relative;
@@ -65,18 +80,30 @@
             display: block;
         }
     }
-
+    .estimate-input {
+        position: absolute;
+        right: 0;
+        top: -12px;
+        width: 65px;
+        padding: 7px 10px;
+    }
     strong{color:#5e5e5e}
     p{
         margin:0;
         padding-left:35px;
         padding-right:200px;
         word-break: break-all;
+        label{
+            display: inline;
+            color:$color1;
+            padding-left:10px;
+        }
     }
     .estimated{
         position: absolute;
-        right:40px;
-        top:12px;
+        right: 40px;
+        top: 13px;
+        padding-right: 11px;
     }
     .avatar{
         background: #efefef;
@@ -255,4 +282,31 @@ article{
     box-sizing:border-box;
     overflow:auto;
     padding:25px 60px;
+}
+#user_labels{
+    label{
+        position: relative;
+        display: inline-block;
+        background: $color1;
+        color:#fff;
+        padding:4px 10px ;
+        margin-right: 30px;
+        .remove{
+            background:#aaa;
+            position: absolute;
+            left:100%;
+            top:0;
+            bottom:0;
+            width:25px;
+            a{
+                display: block;
+                padding: 3px 9px;
+            }
+            &:hover{
+                a{
+                    color:#fff;
+                }
+            }
+        }
+    }
 }
