@@ -84,9 +84,10 @@ class PlanningController extends Controller
 
             if($estimated_time <= 0 ) continue;
 
-						var_dump($todo->estimated_time);
+
             $task_is_planned = $this->addTodoToSchedule($todo);
 
+						var_dump($task_is_planned);
             /*while(!$task_is_planned){
                 foreach ($this->schedules as $user_id => $user_agenda){
                     $this->addDayToSchedule($user_id);
