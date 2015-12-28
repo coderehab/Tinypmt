@@ -79,7 +79,7 @@ class TodoistController extends Controller
 
 		$this->updateLabels();
 		$this->updateUser();
-		$this->updateConnectedUsers();
+		//$this->updateConnectedUsers();
 		$this->updateProductList();
 		$this->updateTodoList();
 		return Redirect::back();
@@ -209,7 +209,11 @@ class TodoistController extends Controller
 	private function updateTodoList(){
 		foreach($this->todos as $todo) {
 			$cr_todo = Todo::where('todoist_id', $todo->id)->first();
-			if(!$cr_todo) $cr_todo = new todo();
+			$checklabels = false;
+			if(!$cr_todo) {
+				$cr_todo = new todo();
+				$checklabels = true;
+			}
 
 			$cr_todo->todoist_id = $todo->id;
 			$cr_todo->user_id = $todo->user_id ;
@@ -238,10 +242,12 @@ class TodoistController extends Controller
 
 			$cr_todo->save();
 
-			foreach($todo->labels as $label) {
-				$label = Label::where('todoist_id', $label)->first();
-				$cr_todo->labels()->attach($label->id);
-			}
+			//if($checklabels){
+				foreach($todo->labels as $label) {
+					$label = Label::where('todoist_id', $label)->first();
+					$cr_todo->labels()->attach($label->id);
+				}
+			//}
 		}
 	}
 }
