@@ -81,9 +81,10 @@ class PlanningController extends Controller
             $todo->user_id = 0;
             $estimated_time = $todo->estimated_time * 3600;
 
-						dd($todo);
+
             if($estimated_time <= 0 ) continue;
 
+						var_dump($todo->estimated_time);
             $task_is_planned = $this->addTodoToSchedule($todo);
 
             /*while(!$task_is_planned){
@@ -122,7 +123,7 @@ class PlanningController extends Controller
             $todo->save();
 
         }
-
+die;
     }
 
     private function addTodoToSchedule($todo){
