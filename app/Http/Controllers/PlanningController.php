@@ -40,12 +40,6 @@ class PlanningController extends Controller
 
         $this->todo_list = $this->prepareTodos();
         $this->setUserTasks();
-        /*
-
-        echo "<pre>";
-        print_r($this->schedules);
-        echo "</pre>";
-        die;*/
     }
 
     private function addDayToSchedule($user_id) {
@@ -86,16 +80,18 @@ class PlanningController extends Controller
             $todo->due_date = '';
             $todo->user_id = 0;
             $estimated_time = $todo->estimated_time * 3600;
-            if($estimated_time <= 0)continue;
+
+						dd($todo);
+            if($estimated_time <= 0 ) continue;
 
             $task_is_planned = $this->addTodoToSchedule($todo);
 
-            while(!$task_is_planned){
+            /*while(!$task_is_planned){
                 foreach ($this->schedules as $user_id => $user_agenda){
                     $this->addDayToSchedule($user_id);
                 }
                 $task_is_planned = $this->addTodoToSchedule($todo);
-            }
+            }*/
 
             if($task_is_planned){
                 $item_order+=1;
