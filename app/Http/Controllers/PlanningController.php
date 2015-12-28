@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 
+use App\Services\GoogleCalendar;
+
 use Request;
 use Redirect;
 
@@ -19,6 +21,7 @@ class PlanningController extends Controller
 {
 
 	private $schedules = [];
+	private $userGoogleTimesheets = [];
 	private $todo_list = [];
 
 	public function updatePlanning(){
@@ -35,11 +38,17 @@ class PlanningController extends Controller
 
 		foreach ($users as $user) {
 			$this->schedules[$user->id] = [];
+
+			$calendar = new GoogleCalendar;
+			$calendarId = "edgarravenhorst@gmail.com";
+			$this->userGoogleTimesheets[$user->id] = $calendar->get_time_available($user->google_calendar_id);
+
 			$this->addDayToSchedule($user->id);
 		}
 
 		$this->todo_list = $this->prepareTodos();
 		$this->setUserTasks();
+
 	}
 
 	private function addDayToSchedule($user_id) {
@@ -51,9 +60,9 @@ class PlanningController extends Controller
 		$user_schedule = $this->schedules[$user->id];
 		$timeavailable = 0;
 
-		foreach ($user->availability->get() as $timesheet){
+/*		foreach ($user->availability->get() as $timesheet){
 			$timeavailable += strtotime($timesheet->endtime) - strtotime($timesheet->starttime);
-		}
+		}*/
 
 		if(count($this->schedules[$user->id]) > 0){
 			$daystoadd = count($this->schedules[$user->id]);
@@ -62,7 +71,22 @@ class PlanningController extends Controller
 			$date = strtotime(date("d-m-Y"));
 		}
 
-		if(date('N', $date) >= 6) $timeavailable = 0;
+		//var_dump($date);
+
+		foreach ($this->userGoogleTimesheets[$user->id] as $timesheet){
+			//echo date("d-m-Y", $date) . "-----" . date("d-m-Y", strtotime($timesheet->start->dateTime)) . " - " . date("d-m-Y", strtotime($timesheet->end->dateTime)) . "<br />";
+
+			$googleStartdate = date("d-m-Y", strtotime($timesheet->start->dateTime));
+			$googleEnddate = date("d-m-Y", strtotime($timesheet->end->dateTime));
+
+			if(date("d-m-Y", $date) == $googleStartdate && date("d-m-Y", $date) == $googleEnddate) {
+				$timeavailable += strtotime($timesheet->end->dateTime) - strtotime($timesheet->start->dateTime);
+			}
+		}
+
+		//die;
+
+		//if(date('N', $date) >= 6) $timeavailable = 0;
 
 		$this->addTimeToSchedule(date("d-m-Y", $date), $user->id, $timeavailable);
 	}
@@ -115,7 +139,8 @@ class PlanningController extends Controller
 
 				$response = $client->request('POST', 'https://todoist.com/API/v6/sync', [
 					"form_params" => [
-						"token"=>"dbadf3381fc34496c555e87111cd0b4d7d9eecee",
+						//"token"=>"dbadf3381fc34496c555e87111cd0b4d7d9eecee",
+						"token"=>"008d2b4c885c1cfa2519476394b4df431320971f",
 						"commands" => json_encode([$commands])
 					]
 				]);

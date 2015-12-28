@@ -116,7 +116,8 @@ class UserController extends Controller {
 		$password = $input['password'];
 		$rules = array(
 			'firstname' => 'required',
-			'lastname' => 'required'
+			'email' => 'required',
+			'google_calendar_id' => 'required'
 		);
 
 		if ($input['email'] != User::find($id)->email)
@@ -130,6 +131,7 @@ class UserController extends Controller {
 			$user->firstname = $input['firstname'];
 			$user->lastname = $input['lastname'];
 			$user->email = $input['email'];
+			$user->google_calendar_id = $input['google_calendar_id'];
 
 			if ($password && Hash::make($password) != $user->password)
 				$user->password = Hash::make($password);

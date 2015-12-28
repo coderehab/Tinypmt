@@ -20,9 +20,13 @@
 </div>
 {!! Form::text('email', $user->email, array('placeholder' => 'Email', 'class'=>'form-control'))!!}
 <div class='row'>
-    {!! Form::password('password', array('placeholder' => 'Wachtwoord', 'class'=>'cols-6 form-control'))!!}
-    {!! Form::password('password_confirmation', array('placeholder' => 'Wachtwoord herhalen', 'class'=>'cols-6 form-control'))!!}
+	{!! Form::password('password', array('placeholder' => 'Wachtwoord', 'class'=>'cols-6 form-control'))!!}
+	{!! Form::password('password_confirmation', array('placeholder' => 'Wachtwoord herhalen', 'class'=>'cols-6 form-control'))!!}
 </div>
+
+<label>Google calendar ID</label>
+{!! Form::text('google_calendar_id', $user->google_calendar_id, array('placeholder' => 'Google calendar ID', 'class'=>'form-control'))!!}
+
 {!! Form::submit('Bijwerken', array('class' =>'cols-6 btn btn-success'))!!}
 {!! Form::close() !!}
 

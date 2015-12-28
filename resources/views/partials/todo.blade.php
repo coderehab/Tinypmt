@@ -5,7 +5,7 @@
         <label for="item-checkbox-{{$todo->todoist_id}}"><i class="fa fa-check"></i></label>
     </div>
 
-    <p>{{$todo->content}}
+    <p>{!! preg_replace('#\!!(.+?)\!!#s', '<strong>$1</strong>', $todo->content) !!}
 
     @foreach($todo->labels()->get() as $label)
     @if(isset($label->name))<label>{{$label->name}}</label>@endif

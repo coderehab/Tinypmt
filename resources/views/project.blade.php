@@ -29,7 +29,6 @@
 <ul class="tasklist">
     <?php $tmpdate = ""?>
     @foreach($active_project->todos as $todo) @if($todo->checked == 0)
-
     @if($todo->estimated_time != 0 && date('G i s', strtotime($todo->due_date)) == "0 00 00")
 
     @unless ($tmpdate == date('l j F - Y',strtotime($todo->due_date)) )
@@ -47,7 +46,7 @@
 <ul class="tasklist">
     @foreach($active_project->todos as $todo)
 
-    @if($todo->estimated_time == 0 && !$todo->checked)
+	@if($todo->estimated_time == 0 && !$todo->checked  && substr($todo->content, 0, 1) != "*")
     @include('partials.todo')
     @endif
 

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
+            $table->string('google_calendar_id');
             $table->string('password', 60);
             $table->string('timezone', 60);
             $table->integer('is_deleted');

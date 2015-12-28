@@ -45,7 +45,8 @@ class TodoistController extends Controller
 		$client = new Client();
 		$response = $client->request('POST', 'https://todoist.com/API/v6/sync', [
 			"form_params" => [
-                "token"=>"dbadf3381fc34496c555e87111cd0b4d7d9eecee",
+				//"token"=>"dbadf3381fc34496c555e87111cd0b4d7d9eecee",
+				"token"=>"008d2b4c885c1cfa2519476394b4df431320971f",
 				"seq_no"=> uniqid() ,
 				"resource_types"=> '["all"]'
 			]
@@ -57,7 +58,7 @@ class TodoistController extends Controller
         print_r($data->Collaborators);
         echo "<pre>";
         die;
-*/
+		*/
 		$projects = array_values(array_sort($data->Projects, function($value){
 			$value = (array) $value;
 			return $value['item_order'];
@@ -68,7 +69,7 @@ class TodoistController extends Controller
 		$user = $data->User;
 		$collaborators = $data->Collaborators;
 
-        var_dump($todos);
+		var_dump($todos);
 
 		$this->user = $user;
 		$this->collaborators = $collaborators;
@@ -76,13 +77,11 @@ class TodoistController extends Controller
 		$this->todos = $todos;
 		$this->labels = $labels;
 
-        $this->updateLabels();
+		$this->updateLabels();
 		$this->updateUser();
 		$this->updateConnectedUsers();
 		$this->updateProductList();
 		$this->updateTodoList();
-
-
 		return Redirect::back();
 	}
 
@@ -199,9 +198,9 @@ class TodoistController extends Controller
 
 			$cr_label->todoist_id = $label->id;
 			$cr_label->uid = $label->uid;
-            $cr_label->name = $label->name;
+			$cr_label->name = $label->name;
 			$cr_label->color = $label->color;
-            $cr_label->is_deleted = $label->is_deleted;
+			$cr_label->is_deleted = $label->is_deleted;
 
 			$cr_label->save();
 		}
@@ -239,10 +238,10 @@ class TodoistController extends Controller
 
 			$cr_todo->save();
 
-            foreach($todo->labels as $label) {
-                $label = Label::where('todoist_id', $label)->first();
-                $cr_todo->labels()->attach($label->id);
-            }
+			foreach($todo->labels as $label) {
+				$label = Label::where('todoist_id', $label)->first();
+				$cr_todo->labels()->attach($label->id);
+			}
 		}
 	}
 }

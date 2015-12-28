@@ -43,4 +43,7 @@ Route::group(array('before' => 'auth'), function(){
 
     Route::post('todo/estimate/{id}', ['as' => 'save_todo_estimate', 'uses' => 'TaskController@update_estimate']);
 
+
+    Route::get('sync/calendar', ['as' => 'sync_google_calendar', 'uses' => 'GoogleCalendarController@get_index']);
+
 });
