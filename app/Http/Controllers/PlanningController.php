@@ -25,8 +25,8 @@ class PlanningController extends Controller
 	private $todo_list = [];
 
 	public function updatePlanning(){
-		$this->prepareSchedule();
-		Redirect::back();
+		$this->createSchedule();
+		return Redirect::back();
 	}
 
 	public function createSchedule(){
@@ -37,6 +37,7 @@ class PlanningController extends Controller
 		$users = User::all();
 
 		foreach ($users as $user) {
+			if(!$user->is_team) continue;
 			$this->schedules[$user->id] = [];
 
 			$calendar = new GoogleCalendar;
@@ -84,11 +85,7 @@ class PlanningController extends Controller
 			}
 		}
 
-		//die;
-
-		//if(date('N', $date) >= 6) $timeavailable = 0;
-
-		$this->addTimeToSchedule(date("d-m-Y", $date), $user->id, $timeavailable);
+		$this->addTimeToSchedule(date("d-m-Y", $date), $user->id, $timeavailable*0.75);
 	}
 
 	private function addTimeToSchedule($date, $user_id, $timeavailable) {
@@ -157,6 +154,7 @@ class PlanningController extends Controller
 		$estimated_time = $todo->estimated_time * 3600;
 		foreach ($this->schedules as $user_id => $user_agenda){
 			$user = User::find($user_id);
+			if(!$user->is_team) continue;
 			if($todo->checked == 1) continue;
 			if(count(array_intersect($todo->labels()->lists("name")->all(), $user->labels()->lists("name")->all())) == 0) continue;
 

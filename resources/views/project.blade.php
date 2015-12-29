@@ -13,23 +13,11 @@
 
 <br />
 
-<h4>Afspraken</h4>
-<ul class="tasklist">
-    @foreach($active_project->todos as $todo) @if($todo->checked == 0)
-
-    @if($todo->estimated_time != 0 && date('G i s', strtotime($todo->due_date)) != "0 00 00")
-    {{ date('G i s',strtotime($todo->due_date))}}
-    @include('partials.todo')
-    @endif
-
-    @endif @endforeach
-</ul>
-
 <h4>Openstaande taken</h4>
 <ul class="tasklist">
     <?php $tmpdate = ""?>
     @foreach($active_project->todos as $todo) @if($todo->checked == 0)
-    @if($todo->estimated_time != 0 && date('G i s', strtotime($todo->due_date)) == "0 00 00")
+    @if($todo->estimated_time != 0)
 
     @unless ($tmpdate == date('l j F - Y',strtotime($todo->due_date)) )
     <?php $tmpdate = date('l j F - Y',strtotime($todo->due_date)) ?>

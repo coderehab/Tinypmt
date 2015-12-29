@@ -17,6 +17,9 @@ Route::get('/logout', array('as'=>'user_logout', 'uses'=>'UserController@get_log
 Route::get('/register', array('as'=>'user_registration', 'uses'=>'UserController@get_register'));
 Route::post('/register', array('as'=>'user_registration', 'uses'=>'UserController@post_register'));
 
+
+Route::post('/todoist/events/', array('as'=>'receive_events', 'uses'=>'TodoistController@receive_event'));
+
 Route::group(array('before' => 'auth'), function(){
 
     Route::get('/edit/user/{id}', array('as'=>'edit_user', 'uses'=>'UserController@edit_user'));

@@ -4,14 +4,19 @@
 
 <h2>{{ $user->firstname}}</h2>
 
-
 {!! Form::open(array('update_user', $user->id)) !!}
+
 @if ($errors->any())
 <div id='login-errors' class='errors'>
     <a href='#' class='close' data-dismiss='alert'>&times;</a>
     {{ implode('', $errors->all("<li class='error'>:message</li>")) }}
 </div>
 @endif
+
+<div class='row'>
+	<label>Dit is een teamlid</label>
+	{!! Form::checkbox('is_team', 1, $user->is_team) !!}
+</div>
 
 <h3>Basisgegevens</h3>
 <div class='row'>

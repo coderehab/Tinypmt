@@ -12,6 +12,7 @@ use App\Todo;
 use App\User;
 use App\Label;
 use App\AvailabilityTimeSheet;
+use Input;
 
 use GuzzleHttp\Client;
 
@@ -21,6 +22,29 @@ class TodoistController extends Controller
 	public function test() {
 
 		return redirect::to('https://todoist.com/oauth/authorize?client_id=de27417420bf4d14881b239ed8506e1d&scope=data:read_write&state=dce0445f47794e51ad85b70090524cb9');
+	}
+
+	public function receive_event(Request $request){
+
+		var_dump($request->json('event_name'));
+		$event = $request->json('event_name');
+		$data = [(object) $request->json('event_data')];
+
+		switch ($event) {
+			case "item:added" || "item:updated" || "item:completed" || "item:uncompleted" || "item:deleted":
+				$this->todos = $data;
+				$this->updateTodoList();
+				break;
+			case "project:added" || "project:updated" || "project:deleted" || "project:archived" || "project:unarchived":
+				$this->projects = $data;
+				$this->updateProjectList();
+				break;
+			case "label:added" || "label:deleted" || "label:updated":
+				$this->labels = $data;
+				$this->updateLabels();
+				break;
+		}
+
 	}
 
 	public function syncdata(Request $request){
@@ -54,11 +78,6 @@ class TodoistController extends Controller
 
 		$data = json_decode($response->getBody()->getContents());
 
-		/*echo "<pre>";
-        print_r($data->Collaborators);
-        echo "<pre>";
-        die;
-		*/
 		$projects = array_values(array_sort($data->Projects, function($value){
 			$value = (array) $value;
 			return $value['item_order'];
@@ -69,7 +88,7 @@ class TodoistController extends Controller
 		$user = $data->User;
 		$collaborators = $data->Collaborators;
 
-		var_dump($todos);
+		//var_dump($todos);
 
 		$this->user = $user;
 		$this->collaborators = $collaborators;
@@ -79,51 +98,33 @@ class TodoistController extends Controller
 
 		$this->updateLabels();
 		$this->updateUser();
-		//$this->updateConnectedUsers();
-		$this->updateProductList();
+		$this->updateConnectedUsers();
+		$this->updateProjectList();
 		$this->updateTodoList();
+
 		return Redirect::back();
 	}
 
 	private function updateConnectedUsers(){
 		foreach($this->collaborators as $user) {
-			//var_dump($user);
 			$cr_user = User::where('todoist_id', '=', $user->id)->first();
-			if(!$cr_user) {
-				$cr_user = new User();
+			if(isset($user->is_deleted) && !$user->is_deleted || !isset($user->is_deleted)){
+				if(!$cr_user) {
+					$cr_user = new User();
+				}
+
+				$cr_user->todoist_id = $user->id;
+				$cr_user->firstname = $user->full_name;
+				$cr_user->lastname = "";
+				$cr_user->email = $user->email;
+				$cr_user->timezone = $user->timezone;
+				if(isset($user->is_deleted)) $cr_user->is_deleted = $user->is_deleted;
+				$cr_user->password = Hash::make("pass");
+
 				$cr_user->save();
-				$timesheet = new AvailabilityTimeSheet();
-				$timesheet->user_id = $cr_user->id;
-				$timesheet->is_available = 1;
-				$timesheet->date = null;
-				$timesheet->starttime = "8:00";
-				$timesheet->endtime = "18:00";
-				$timesheet->date_string = "every day";
-				$timesheet->is_recurring = 1;
-				$timesheet->recurring_count = -1;
-				$timesheet->recurring_step = 24;
-				$timesheet->save();
+			}else{
+				if ($cr_user) $cr_user->delete();
 			}
-
-			$cr_user->todoist_id = $user->id;
-			$cr_user->firstname = $user->full_name;
-			$cr_user->lastname = "";
-			$cr_user->email = $user->email;
-			$cr_user->timezone = $user->timezone;
-			if(isset($user->is_deleted)) $cr_user->is_deleted = $user->is_deleted;
-			$cr_user->password = Hash::make("pass");
-
-			$cr_user->monday_default_available = 8;
-			$cr_user->tuesday_default_available = 8;
-			$cr_user->wednesday_default_available = 8;
-			$cr_user->thursday_default_available = 8;
-			$cr_user->friday_default_available = 8;
-			$cr_user->saturday_default_available = 0;
-			$cr_user->sunday_default_available = 0;
-
-			$cr_user->dates_unavailable = "";
-
-			$cr_user->save();
 		}
 	}
 
@@ -134,18 +135,6 @@ class TodoistController extends Controller
 		$cr_user = User::where('todoist_id', '=', $user->id)->first();
 		if(!$cr_user) {
 			$cr_user = new User();
-			$cr_user->save();
-			$timesheet = new AvailabilityTimeSheet();
-			$timesheet->user_id = $cr_user->id;
-			$timesheet->is_available = 1;
-			$timesheet->date = null;
-			$timesheet->starttime = "8:00";
-			$timesheet->endtime = "18:00";
-			$timesheet->date_string = "every day";
-			$timesheet->is_recurring = 1;
-			$timesheet->recurring_count = -1;
-			$timesheet->recurring_step = 24;
-			$timesheet->save();
 		}
 
 		$cr_user->todoist_id = $user->id;
@@ -155,20 +144,10 @@ class TodoistController extends Controller
 		$cr_user->email = $user->email;
 		$cr_user->password = Hash::make("pass");
 
-		$cr_user->monday_default_available = 8;
-		$cr_user->tuesday_default_available = 8;
-		$cr_user->wednesday_default_available = 8;
-		$cr_user->thursday_default_available = 8;
-		$cr_user->friday_default_available = 8;
-		$cr_user->saturday_default_available = 0;
-		$cr_user->sunday_default_available = 0;
-
-		$cr_user->dates_unavailable = "";
-
 		$cr_user->save();
 	}
 
-	private function updateProductList(){
+	private function updateProjectList(){
 		foreach($this->projects as $project) {
 			$cr_project = Project::where('todoist_id', '=', $project->id)->first();
 			if(!$cr_project) $cr_project = new Project();
@@ -189,7 +168,6 @@ class TodoistController extends Controller
 			$cr_project->save();
 		}
 	}
-
 
 	private function updateLabels(){
 		foreach($this->labels as $label) {
@@ -225,7 +203,7 @@ class TodoistController extends Controller
 			$cr_todo->in_history = $todo->in_history ;
 			$cr_todo->date_added = $todo->date_added ;
 			$cr_todo->checked = $todo->checked ;
-			$cr_todo->date_lang = $todo->date_lang ;
+			if (isset($todo->date_lang)) $cr_todo->date_lang = $todo->date_lang ;
 			$cr_todo->indent = $todo->indent ;
 			$cr_todo->is_deleted = $todo->is_deleted ;
 			$cr_todo->priority = $todo->priority ;;
@@ -238,16 +216,17 @@ class TodoistController extends Controller
 			$cr_todo->item_order = $todo->item_order ;
 			//$cr_todo->due_date_utc = $todo->due_date_utc ;
 			$cr_todo->date_checked = "" ;
-			//$cr_todo->estimated_time = 0;
 
-			$cr_todo->save();
+			if(!$cr_todo->is_deleted)
+				$cr_todo->save();
+			else
+				$cr_todo->delete();
 
-			//if($checklabels){
-				foreach($todo->labels as $label) {
-					$label = Label::where('todoist_id', $label)->first();
+			foreach($todo->labels as $label) {
+				$label = Label::where('todoist_id', $label)->first();
+					$cr_todo->labels()->detach($label->id);
 					$cr_todo->labels()->attach($label->id);
-				}
-			//}
+			}
 		}
 	}
 }

@@ -21,9 +21,6 @@ class ProjectController extends PlanningController
 
 		$view->projects = Project::all();
 		$view->active_project = Project::find($id);
-		$this->createSchedule();
-
-
 
 		return $view;
 	}

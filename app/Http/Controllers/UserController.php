@@ -127,10 +127,13 @@ class UserController extends Controller {
 
 		if($validator->passes()){
 
+			if(!isset($input['is_team'])) $input['is_team'] = 0;
+
 			$user = User::find($id);
 			$user->firstname = $input['firstname'];
 			$user->lastname = $input['lastname'];
 			$user->email = $input['email'];
+			$user->is_team = $input['is_team'];
 			$user->google_calendar_id = $input['google_calendar_id'];
 
 			if ($password && Hash::make($password) != $user->password)
