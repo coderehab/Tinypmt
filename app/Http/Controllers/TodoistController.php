@@ -186,10 +186,9 @@ class TodoistController extends Controller
 	private function updateTodoList(){
 		foreach($this->todos as $todo) {
 			$cr_todo = Todo::where('todoist_id', $todo->id)->first();
-			$checklabels = false;
+
 			if(!$cr_todo) {
 				$cr_todo = new todo();
-				$checklabels = true;
 			}
 
 			if (isset($todo->id)) $cr_todo->todoist_id = $todo->id;
