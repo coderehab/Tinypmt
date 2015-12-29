@@ -137,7 +137,7 @@ class PlanningController extends Controller
 				$response = $client->request('POST', 'https://todoist.com/API/v6/sync', [
 					"form_params" => [
 						//"token"=>"dbadf3381fc34496c555e87111cd0b4d7d9eecee",
-						"token"=>"008d2b4c885c1cfa2519476394b4df431320971f",
+						"token"=>"31ecf41c4338d45dd4c6ad65f706207366691925",
 						"commands" => json_encode([$commands])
 					]
 				]);
