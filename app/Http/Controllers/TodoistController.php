@@ -192,39 +192,40 @@ class TodoistController extends Controller
 				$checklabels = true;
 			}
 
-			$cr_todo->todoist_id = $todo->id;
-			$cr_todo->user_id = $todo->user_id ;
-			$cr_todo->content = $todo->content ;
-			$cr_todo->due_date = $todo->due_date ;
-			$cr_todo->day_order = $todo->day_order ;
-			$cr_todo->assigned_by_uid = $todo->assigned_by_uid ;
-			$cr_todo->sync_id = $todo->sync_id ;
-			$cr_todo->in_history = $todo->in_history ;
-			$cr_todo->date_added = $todo->date_added ;
-			$cr_todo->checked = $todo->checked ;
+			if (isset($todo->id)) $cr_todo->todoist_id = $todo->id;
+			if (isset($todo->user_id)) $cr_todo->user_id = $todo->user_id ;
+			if (isset($todo->content)) $cr_todo->content = $todo->content ;
+			if (isset($todo->due_date)) $cr_todo->due_date = $todo->due_date ;
+			if (isset($todo->day_order)) $cr_todo->day_order = $todo->day_order ;
+			if (isset($todo->assigned_by_uid)) $cr_todo->assigned_by_uid = $todo->assigned_by_uid ;
+			if (isset($todo->sync_id)) $cr_todo->sync_id = $todo->sync_id ;
+			if (isset($todo->in_history)) $cr_todo->in_history = $todo->in_history ;
+			if (isset($todo->date_added)) $cr_todo->date_added = $todo->date_added ;
+			if (isset($todo->checked)) $cr_todo->checked = $todo->checked ;
 			if (isset($todo->date_lang)) $cr_todo->date_lang = $todo->date_lang ;
-			$cr_todo->indent = $todo->indent ;
-			$cr_todo->is_deleted = $todo->is_deleted ;
-			$cr_todo->priority = $todo->priority ;;
+			if (isset($todo->indent)) $cr_todo->indent = $todo->indent ;
+			if (isset($todo->is_deleted)) $cr_todo->is_deleted = $todo->is_deleted ;
+			if (isset($todo->priority)) $cr_todo->priority = $todo->priority ;;
 
-			$cr_todo->responsible_uid = $todo->responsible_uid ;
-			$cr_todo->project_id = $todo->project_id ;
-			$cr_todo->collapsed = $todo->collapsed ;
+			if (isset($todo->responsible_uid)) $cr_todo->responsible_uid = $todo->responsible_uid ;
+			if (isset($todo->project_id)) $cr_todo->project_id = $todo->project_id ;
+			if (isset($todo->collapsed)) $cr_todo->collapsed = $todo->collapsed ;
 			//$cr_todo->date_string = $todo->date_string ;
-			$cr_todo->is_archived = $todo->is_archived ;
-			$cr_todo->item_order = $todo->item_order ;
+			if (isset($todo->is_archived)) $cr_todo->is_archived = $todo->is_archived ;
+			if (isset($todo->item_order)) $cr_todo->item_order = $todo->item_order ;
 			//$cr_todo->due_date_utc = $todo->due_date_utc ;
-			$cr_todo->date_checked = "" ;
+			if (isset($todo->date_checked)) $cr_todo->date_checked = $todo->date_checked ;
 
-			if(!$cr_todo->is_deleted)
-				$cr_todo->save();
-			else
-				$cr_todo->delete();
-
-			foreach($todo->labels as $label) {
-				$label = Label::where('todoist_id', $label)->first();
+			if(isset($cr_todo->is_deleted)) {
+				if(!$cr_todo->is_deleted) $cr_todo->save();
+				else $cr_todo->delete();
+			}
+			if (isset($todo->labels)){
+				foreach($todo->labels as $label) {
+					$label = Label::where('todoist_id', $label)->first();
 					$cr_todo->labels()->detach($label->id);
 					$cr_todo->labels()->attach($label->id);
+				}
 			}
 		}
 	}
