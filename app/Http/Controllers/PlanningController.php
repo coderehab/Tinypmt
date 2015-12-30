@@ -149,6 +149,7 @@ class PlanningController extends Controller
 			]
 		]);
 		$data = json_decode($response->getBody()->getContents());
+		//die;
 	}
 
 	private function addTodoToSchedule($todo){
@@ -158,7 +159,16 @@ class PlanningController extends Controller
 			$user = User::find($user_id);
 			if(!$user->is_team) continue;
 			if($todo->checked == 1) continue;
-			if($user->projects()->where("todoist_id", $todo->project->todoist_id)->count() == 0) continue;
+
+			$user_has_project = false;
+			foreach ($user->projects as $project) {
+				if($project->todoist_id == $todo->project->todoist_id) {
+					$user_has_project = true;
+					break;
+				}
+			}
+			if(!$user_has_project) continue;
+
 			if(count(array_intersect($todo->labels()->lists("name")->all(), $user->labels()->lists("name")->all())) == 0) continue;
 
 			foreach($user_agenda as $key => $schedule){
@@ -179,6 +189,7 @@ class PlanningController extends Controller
 
 			$this->schedules[$user_id] = $user_agenda;
 		}
+
 		return $task_is_planned;
 	}
 
