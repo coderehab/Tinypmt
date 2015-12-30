@@ -139,7 +139,8 @@ class TodoistController extends Controller
 
 
 		foreach($this->collaboratorStates as $connection) {
-			if($connection->state == 'active'){
+			dd($this->collaboratorStates);
+			if($connection->state != 'deleted'){
 				$project = Project::where('todoist_id', $connection->project_id)->first();
 				$user = User::where('todoist_id', $connection->user_id)->first();
 
