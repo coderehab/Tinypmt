@@ -16,7 +16,7 @@ class Project extends Model
 
 	public function todos()
 	{
-		return $this->hasMany('App\Todo', 'project_id', 'todoist_id')->orderBy('due_date', 'desc');
+		return $this->hasMany('App\Todo', 'project_id', 'todoist_id')->orderBy('due_date', 'asc');
 	}
 
 	public function users()
