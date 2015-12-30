@@ -85,7 +85,7 @@ class PlanningController extends Controller
 			}
 		}
 
-		$this->addTimeToSchedule(date("d-m-Y", $date), $user->id, $timeavailable*0.75);
+		$this->addTimeToSchedule(date("d-m-Y", $date), $user->id, $timeavailable);
 	}
 
 	private function addTimeToSchedule($date, $user_id, $timeavailable) {
