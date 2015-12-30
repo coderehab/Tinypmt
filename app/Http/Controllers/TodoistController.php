@@ -28,7 +28,7 @@ class TodoistController extends Controller
 	public function receive_event(Request $request){
 
 		var_dump($request->json('event_name'));
-		$event = $request->json('event_name');
+		/*$event = $request->json('event_name');
 		$data = [(object) $request->json('event_data')];
 
 		switch ($event) {
@@ -44,7 +44,7 @@ class TodoistController extends Controller
 				$this->labels = $data;
 				$this->updateLabels();
 				break;
-		}
+		}*/
 	}
 
 	public function syncdata(Request $request){
