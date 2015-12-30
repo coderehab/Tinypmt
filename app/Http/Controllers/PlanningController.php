@@ -123,7 +123,7 @@ class PlanningController extends Controller
 			}
 
 
-			if(isset($todo->user->todoist_id) && count($todo->getDirty()) > 0){
+			if(isset($todo->user->todoist_id)){
 
 				$commands = new stdClass();
 				$commands->uuid = uniqid();
