@@ -85,6 +85,7 @@ class TodoistController extends Controller
 
 		DB::table('project_user')->delete();
 		DB::table('label_todo')->delete();
+		DB::table('todos')->where("estimated_time", 0)->delete();
 
 		$todos = $data->Items;
 		$labels = $data->Labels;
@@ -237,6 +238,8 @@ class TodoistController extends Controller
 			if (isset($todo->item_order)) $cr_todo->item_order = $todo->item_order ;
 			//$cr_todo->due_date_utc = $todo->due_date_utc ;
 			if (isset($todo->date_checked)) $cr_todo->date_checked = $todo->date_checked ;
+
+			$cr_todo->touch();
 
 			if(isset($cr_todo->is_deleted)) {
 				if(!$cr_todo->is_deleted) $cr_todo->save();
