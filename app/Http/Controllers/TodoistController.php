@@ -139,11 +139,12 @@ class TodoistController extends Controller
 
 
 		foreach($this->collaboratorStates as $connection) {
-			//dd($connection->project_id);
-			$project = Project::where('todoist_id', $connection->project_id)->first();
-			$user = User::where('todoist_id', $connection->user_id)->first();
+			if($connection->state == 'active'){
+				$project = Project::where('todoist_id', $connection->project_id)->first();
+				$user = User::where('todoist_id', $connection->user_id)->first();
 
-			if($project) $project->users()->attach($user->id);
+				if($project) $project->users()->attach($user->id);
+			}
 		}
 
 	}
