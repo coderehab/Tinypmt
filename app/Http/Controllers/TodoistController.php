@@ -13,6 +13,7 @@ use App\User;
 use App\Label;
 use App\AvailabilityTimeSheet;
 use Input;
+use DB;
 
 use GuzzleHttp\Client;
 
@@ -82,16 +83,22 @@ class TodoistController extends Controller
 			return $value['item_order'];
 		}));
 
+		DB::table('project_user')->delete();
+		DB::table('label_todo')->delete();
+
 		$todos = $data->Items;
 		$labels = $data->Labels;
 		$user = $data->User;
 		$collaborators = $data->Collaborators;
+		$collaboratorStates = $data->CollaboratorStates;
 
 		//var_dump($todos);
 
 		$this->user = $user;
 		$this->collaborators = $collaborators;
 		$this->projects = $projects;
+		$this->collaboratorStates = $collaboratorStates;
+
 		$this->todos = $todos;
 		$this->labels = $labels;
 
@@ -99,6 +106,7 @@ class TodoistController extends Controller
 		$this->updateUser();
 		$this->updateConnectedUsers();
 		$this->updateProjectList();
+		$this->updateCollaboratorStates();
 		$this->updateTodoList();
 
 		return Redirect::back();
@@ -125,6 +133,19 @@ class TodoistController extends Controller
 				if ($cr_user) $cr_user->delete();
 			}
 		}
+	}
+
+	private function updateCollaboratorStates(){
+
+
+		foreach($this->collaboratorStates as $connection) {
+			//dd($connection->project_id);
+			$project = Project::where('todoist_id', $connection->project_id)->first();
+			$user = User::where('todoist_id', $connection->user_id)->first();
+
+			if($project) $project->users()->attach($user->id);
+		}
+
 	}
 
 	private function updateUser(){
@@ -222,7 +243,6 @@ class TodoistController extends Controller
 			if (isset($todo->labels)){
 				foreach($todo->labels as $label) {
 					$label = Label::where('todoist_id', $label)->first();
-					$cr_todo->labels()->detach($label->id);
 					$cr_todo->labels()->attach($label->id);
 				}
 			}

@@ -138,7 +138,6 @@ class PlanningController extends Controller
 			}
 
 			$todo->save();
-
 		}
 
 		$client = new Client();
@@ -159,6 +158,7 @@ class PlanningController extends Controller
 			$user = User::find($user_id);
 			if(!$user->is_team) continue;
 			if($todo->checked == 1) continue;
+			if($user->projects()->where("todoist_id", $todo->project->todoist_id)->count() == 0) continue;
 			if(count(array_intersect($todo->labels()->lists("name")->all(), $user->labels()->lists("name")->all())) == 0) continue;
 
 			foreach($user_agenda as $key => $schedule){

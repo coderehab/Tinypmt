@@ -12,10 +12,15 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class Project extends Model
 {
-    protected $table = 'projects';
+	protected $table = 'projects';
 
-    public function todos()
-    {
-        return $this->hasMany('App\Todo', 'project_id', 'todoist_id')->orderBy('due_date', 'asc');
-    }
+	public function todos()
+	{
+		return $this->hasMany('App\Todo', 'project_id', 'todoist_id')->orderBy('due_date', 'desc');
+	}
+
+	public function users()
+	{
+		return $this->belongsToMany('App\User');
+	}
 }
