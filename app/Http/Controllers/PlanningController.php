@@ -96,6 +96,7 @@ class PlanningController extends Controller
 	private function setUserTasks() {
 		//var_dump($this->schedules);
 		$item_order = 0;
+		$item_update_count = 0;
 		$todoist_commands = [];
 		foreach($this->todo_list as $todo) {
 			$task_is_planned = 0;
@@ -124,7 +125,7 @@ class PlanningController extends Controller
 
 
 			if(isset($todo->user->todoist_id)){
-
+				$item_update_count ++;
 				$commands = new stdClass();
 				$commands->uuid = uniqid();
 				$commands->type = "item_update";
@@ -135,6 +136,21 @@ class PlanningController extends Controller
 				$commands->args->date_lang = "nl";
 				$commands->args->responsible_uid = $todo->user->todoist_id;
 				$todoist_commands[] = $commands;
+			}
+
+			if($item_update_count == 99){
+				$client = new Client();
+				$response = $client->request('POST', 'https://todoist.com/API/v6/sync', [
+					"form_params" => [
+						//"token"=>"dbadf3381fc34496c555e87111cd0b4d7d9eecee",
+						"token"=>"31ecf41c4338d45dd4c6ad65f706207366691925",
+						"commands" => json_encode($todoist_commands)
+					]
+				]);
+				$data = json_decode($response->getBody()->getContents());
+
+				$todoist_commands = [];
+				$item_update_count == 0;
 			}
 
 			$todo->save();
