@@ -238,6 +238,8 @@ class PlanningController extends Controller
 			};
 		};
 
+		dd($todo_list);
+
 		return $todo_list;
 	}
 
