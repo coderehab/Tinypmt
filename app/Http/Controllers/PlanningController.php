@@ -99,6 +99,7 @@ class PlanningController extends Controller
 		$item_update_count = 0;
 		$todoist_commands = [];
 		$counter = 0;
+		set_time_limit(60);
 		foreach($this->todo_list as $todo) {
 			//var_dump($counter++);
 			$task_is_planned = 0;
