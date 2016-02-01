@@ -121,6 +121,7 @@ class PlanningController extends Controller
 
 			if($task_is_planned){
 				$item_order+=1;
+				$todo->update();
 			}
 
 
@@ -152,8 +153,6 @@ class PlanningController extends Controller
 				$todoist_commands = [];
 				$item_update_count == 0;
 			}
-
-			$todo->save();
 		}
 
 		$client = new Client();
@@ -237,8 +236,6 @@ class PlanningController extends Controller
 				$todo_list[] = $todo;
 			};
 		};
-
-		dd($todo_list);
 
 		return $todo_list;
 	}
