@@ -214,29 +214,30 @@ class PlanningController extends Controller
 		$projects = Project::orderBy('priority', 'desc')->get();
 
 		foreach ($projects as $project){
-			$todos = Todo::where("project_id", $project->todoist_id)->where('priority', 4)->orderBy('priority', 'desc')->where("estimated_time", ">", 0)->where("checked", 0)->get();
+			$todos = Todo::where("project_id", $project->todoist_id)->where('priority', 4)->where("estimated_time", ">", 0)->where("checked", 0)->orderBy('priority', 'desc')->get();
 			foreach ($todos as $todo){
 				$todo_list[] = $todo;
 			};
 		};
 		foreach ($projects as $project){
-			$todos = Todo::where("project_id", $project->todoist_id)->where('priority', 3)->orderBy('priority', 'desc')->where("estimated_time", ">", 0)->where("checked", 0)->get();
+			$todos = Todo::where("project_id", $project->todoist_id)->where('priority', 3)->where("estimated_time", ">", 0)->where("checked", 0)->orderBy('priority', 'desc')->get();
 			foreach ($todos as $todo){
 				$todo_list[] = $todo;
 			};
 		};
 		foreach ($projects as $project){
-			$todos = Todo::where("project_id", $project->todoist_id)->where('priority', 2)->orderBy('priority', 'desc')->where("estimated_time", ">", 0)->where("checked", 0)->get();
+			$todos = Todo::where("project_id", $project->todoist_id)->where('priority', 2)->where("estimated_time", ">", 0)->where("checked", 0)->orderBy('priority', 'desc')->get();
 			foreach ($todos as $todo){
 				$todo_list[] = $todo;
 			};
 		};
 		foreach ($projects as $project){
-			$todos = Todo::where("project_id", $project->todoist_id)->where('priority', 1)->orderBy('priority', 'desc')->where("estimated_time", ">", 0)->where("checked", 0)->get();
+			$todos = Todo::where("project_id", $project->todoist_id)->where('priority', 1)->where("estimated_time", ">", 0)->where("checked", 0)->orderBy('priority', 'desc')->get();
 			foreach ($todos as $todo){
 				$todo_list[] = $todo;
 			};
 		};
+
 		return $todo_list;
 	}
 
