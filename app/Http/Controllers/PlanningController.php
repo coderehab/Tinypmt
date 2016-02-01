@@ -99,6 +99,7 @@ class PlanningController extends Controller
 		$item_update_count = 0;
 		$todoist_commands = [];
 		foreach($this->todo_list as $todo) {
+			var_dump($todo->id);
 			$task_is_planned = 0;
 			$todo->due_date = '';
 			$todo->user_id = 0;
@@ -149,7 +150,6 @@ class PlanningController extends Controller
 					]
 				]);
 				$data = json_decode($response->getBody()->getContents());
-
 				$todoist_commands = [];
 				$item_update_count == 0;
 			}
