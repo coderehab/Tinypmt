@@ -100,7 +100,7 @@ class PlanningController extends Controller
 		$todoist_commands = [];
 		$counter = 0;
 		foreach($this->todo_list as $todo) {
-			var_dump($counter++);
+			//var_dump($counter++);
 			$task_is_planned = 0;
 			$todo->due_date = '';
 			$todo->user_id = 0;
